@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1.0,user-scalable=no" name="viewport">
+        <title>chenzhuo.pub</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="top ">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-3 col-lg-3 col-lg-offset-0 text-left">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-3 col-lg-3 col-lg-offset-0 text-right">
+                                        <div class="input-group input-group-sm">
+                                            <input class="form-control" placeholder="" type="text">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button">
+                                                        <span class=" glyphicon glyphicon-search" id="basic-addon2">
+                                                        </span>
+                                                    </button>
+                                                </span>
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-3 col-lg-3 col-lg-offset-0 text-right">
+                                    </div>
+                                </div>
+                                <div class="weather" id="weather">
+                                    天气
+                                </div>
+								<div class="oilInfo" id="oilInfo">
+                                    油价
+                                </div>
+                                <div class="a-link" id="a-link" style="display:none">
+                                    <ul class="nav nav-pills tabsInfor">
+                                        <li class="title" role="presentation">
+                                            <video controls="" height="30" poster="image/zgzs.png" src="http://trslbs.kaolafm.com/016f63815d64d4db/1600000000510/playlist.m3u8" width="100">
+                                            </video>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <video height="30" poster="image/jjzs.png" src="http://trslbs.kaolafm.com/016f63815d64d4db/1600000000514/playlist.m3u8" width="100">
+                                            </video>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a class="aLinkDisplay">
+                                                隐藏
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row tabs">
+                                    <ul class="nav nav-pills tabsInfor">
+                                        <li class="active title" role="presentation">
+                                            <a class="getInfor">
+                                                最新
+                                            </a>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a href="/map.html">
+                                                地图
+                                            </a>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a class="aLink">
+                                                常用
+                                            </a>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a href="http://chenzhuo.pub/AIinfo/login.html" target="_blank">
+                                                读书签到
+                                            </a>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a href="http://www.ilovepdf.com" target="_blank">
+                                                iLOVEPDF
+                                            </a>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a class="contacts">
+                                                通讯录
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tabsoperate">
+                                        <span class="glyphicon glyphicon-chevron-up tabsclose tabsoperate-icon">
+                                        </span>
+                                        <span class="glyphicon glyphicon-chevron-down tabsopen tabsoperate-icon">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content row">
+                                <div class="content-infors ">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dataInfor " id="dataInfor">
+                                    </div>
+                                </div>
+                                <div class="content-contacts ">
+                                        <table class="table table-hover">
+                                            <caption>
+                                                通讯录
+                                            </caption>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        姓名
+                                                    </th>
+                                                    <th>
+                                                        电话号码
+                                                    </th>
+                                                    <th>
+                                                        职位
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contactsData">
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div class="content-up">
+                                    <button class="btn btn-default" type="button">
+                                        <span aria-hidden="true" class="glyphicon glyphicon-arrow-up">
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p align="center">
+                2017@chenzhuo.pub All Rights Reserved
+            </p>
+            <p align="center" id="viewNumber">
+            </p>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.5.2/videojs-contrib-hls.min.js">
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>
+        <script src="js/layer/layer.js">
+        </script>
+    </body>
+    <script type="text/javascript">
+        $(function(){
+          $(".content-contacts").css("display","none")
+          $(".content-infors").css("display","block")
+          setTableHeight(1);
+          getAllInfor({});//默认获取数据
+          getWeather({});
+		  getOilInfo({});
+        })
+        
+        $(".aLink").click(function(){
+          $(".a-link").css("display","")
+        })
+        $(".aLinkDisplay").click(function(){
+          $(".a-link").css("display","none")
+        })
+        
+        //切换tab 
+        $(".getInfor").click(function(){      
+          var value = $(this).text()
+          var reqData = {}
+          $(".content-contacts").css("display","none")
+          $(".content-infors").css("display","block")
+          if (value != "最新") {
+            reqData = {
+              source: value,
+            }
+          };
+          getAllInfor(reqData)
+        })
+        
+        //返回滚动条顶端
+        $(".content-up").click(function(){
+          $('.content').animate({scrollTop:0}, 'slow');
+        })
+        
+        //tab样式
+        $(".title").click(function(){
+          $(".title").removeClass("active")
+          $(this).addClass("active")
+        })
+        
+        //点击通讯录
+        $(".contacts").click(function(){       
+          getContacts()//通讯录
+        })
+   
+        $(".weather").click(function(){       
+          getWeather1({})//天气
+        })
+        
+        //点击展开收回tabs
+        $(".tabsoperate-icon").click(function(){
+          $(".tabsoperate-icon").toggle()
+          $(".tabsInfor").slideToggle(function(){
+          setTableHeight(0)
+          })
+        })
+
+        //获取通讯录
+        function getContacts(){
+          var reqData = {}
+          var getContactsHtml = "";
+          layer.open({
+            content: '<p>请输入验证信息：</p><input type="text" id="inputVulue">'
+            ,btn: ['确定', '取消']
+            ,yes: function(index, layero){
+              reqData = {
+                token:$("#inputVulue").val()//不知道设呢key，暂时写value
+              }
+              $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: 'http://chenzhuo.pub/AIinfo/user_address_list',
+                data: reqData,
+                success: function(data) {
+                  if (!data.status) {//验证成功,显示通讯录
+                    var resData = data.data
+                    for (var i = 0; i < resData.length; i++) {
+                     getContactsHtml +='<tr>'+
+                                      '<td>'+resData[i].userName+'</td>'+
+                                      '<td><a href="tel:'+resData[i].telPhone+'">'+resData[i].telPhone+'</a></td>'+
+                    '<td>'+resData[i].post+'</td>'+
+                                    '</tr>'
+                    };
+                    $("#contactsData").html(getContactsHtml)
+                    $(".content-contacts").css("display","block")
+                    $(".content-infors").css("display","none")
+                    $(".content").scrollTop(10) 
+                    if( $(".content").scrollTop() <= 0 ){//没有滚动条时隐藏返回顶端按钮
+                      $(".content-up").css("display","none")
+                    }
+                    $(".content").scrollTop(0) 
+                  }else{//验证失败,弹出提示
+                    layer.alert(data.msg)
+                  };                               
+                },
+                error: function() {
+                   layer.alert("出错啦！！")
+                }
+              }); 
+              layer.close(index);
+            }
+            ,btn2: function(index, layero){
+              layer.close(index);
+            }
+            ,cancel: function(){ 
+              layer.close(index);
+            }
+          });
+        }
+		
+		//获取油价数据
+        function getOilInfo(reqData){
+          var oilinfoHtml = "";
+          $.ajax({
+              type: 'post',
+              dataType: 'json',
+              url: 'http://chenzhuo.pub/AIinfo/oilinfo',
+              data: reqData,
+              success: function(data) {
+                if (data.data) {
+                  var inforData = data.data;
+                  $(".oilInfo").html("");
+                  oilinfoHtml += '<div class="alert alert-info">今日四川油价:92#(' + inforData.oil92 + ') | 95#(' + inforData.oil95 + ') | 0#(' + inforData.oil0 + ')</div>';
+                  $(".oilInfo").append(oilinfoHtml)
+                };                              
+              },
+              error: function() {
+              }
+          }); 
+        }
+   
+        //获取天气数据
+        function getWeather(reqData){
+          var weatherHtml = "";
+          $.ajax({
+              type: 'post',
+              dataType: 'json',
+              url: 'http://chenzhuo.pub/AIinfo/weather',
+              data: reqData,
+              success: function(data) {
+                if (data.data) {
+                  var inforData = data.data;
+                  $(".weather").html("");
+                  weatherHtml +='<div class="alert alert-info">' + inforData[0].location.name + '-'+inforData[0].now.text+'-' + inforData[0].now.temperature + '°(紫外线:'+inforData[0].suggestion.uv.brief+'|运动:'+ inforData[0].suggestion.sport.brief+'|洗车:'+ inforData[0].suggestion.car_washing.brief+')</div>';
+                  $(".weather").append(weatherHtml)
+                };                              
+              },
+              error: function() {
+              }
+          }); 
+        }
+        function getWeather1(reqData){
+          $.ajax({
+              type: 'post',
+              dataType: 'json',
+              url: 'http://chenzhuo.pub/AIinfo/weather',
+              data: reqData,
+              success: function(data) {
+                if (data.data) {
+                  var inforData = data.data
+                  alert(inforData[0].location.name + '\n今天:' + inforData[0].daily[0].low + '°-' + inforData[0].daily[0].high + '°|白天:' + inforData[0].daily[0].text_day + '|晚上:' + inforData[0].daily[0].text_night + '|' + inforData[0].daily[0].wind_direction + '风' + inforData[0].daily[0].wind_scale + '级\n\n明天:' + inforData[0].daily[1].low + '°-' + inforData[0].daily[1].high + '°|白天:' + inforData[0].daily[1].text_day + '|晚上:' + inforData[0].daily[1].text_night + '|' + inforData[0].daily[1].wind_direction + '风' + inforData[0].daily[1].wind_scale + '级\n\n后天:' + inforData[0].daily[2].low + '°-' + inforData[0].daily[2].high + '°|白天:' + inforData[0].daily[2].text_day + '|晚上:' + inforData[0].daily[2].text_night + '|' + inforData[0].daily[2].wind_direction + '风' + inforData[0].daily[2].wind_scale + '级');
+                };                              
+              },
+                error: function() {}
+          }); 
+        }
+        
+        //获取文章数据
+        function getAllInfor(reqData){
+          $.ajax({
+              type: 'post',
+              dataType: 'json',
+              url: 'http://chenzhuo.pub/AIinfo/art_list',
+              data: reqData,
+              success: function(data) {
+                if (data.data) {
+                  var inforData = data.data
+                  $(".dataInfor").html("");//清空
+                  var html = '';
+                  for (var i = 0; i < inforData.length; i++) {       
+                    var tagesHtml = '';
+                    var tagesList = [];
+                    var introductionHtml = "";
+                    var authorHtml = "";
+                    if (inforData[i].introduction) {
+                      introductionHtml = '<p class="infor-introduction">'+inforData[i].introduction+'</p>'
+                    };
+                    if (inforData[i].source) {
+                      tagesList = inforData[i].source.split(",") ;
+                    }
+                    if (inforData[i].author) {
+                      authorHtml = '<span class="author blue">'+inforData[i].author+'</span>'
+                    };
+                    for (var j = 0; j < tagesList.length; j++) {
+                      tagesHtml += '<span>'+tagesList[j]+'</span>'       
+                    };
+                    html += '<div class="row infor" onclick="javascript:window.open(\''+inforData[i].linkUrl+'\')">'+
+                      '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+
+                        '<img class="img" src="'+inforData[i].picUrl+'">'+
+                      '</div>'+
+                      '<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">'+
+                        '<div class="">'+
+                          '<h3 class="infor-title">'+inforData[i].title+'</h3> '+                   
+                        '</div>'+
+                        '<div class="">'+authorHtml+
+                          '<span>'+inforData[i].date+'</span> '+                   
+                        '</div>'+
+                        '<div class="">'+introductionHtml+                    
+                        '</div>'+
+                        '<div class=" blue">'+
+                          '<span class="glyphicon glyphicon-tags"></span>&nbsp;'+tagesHtml+
+                        '</div>'+
+                      '</div>'+                  
+                    '</div>'                
+                  };
+                  $(".dataInfor").append(html) 
+                  $(".content").scrollTop(10) 
+                  if( $(".content").scrollTop() <= 0 ){//没有滚动条时隐藏返回顶端按钮
+                    $(".content-up").css("display","none")
+                  }
+                  $(".content").scrollTop(0) 
+                };                              
+              },
+              error: function() {
+              }
+          });   
+        }
+        
+        //设置滚动框高度
+        function setTableHeight(init){
+          var winHeight = 0 //获取窗口高度
+          var topHeight = $(".top ").height()
+          var inforsHeight = 0
+          if (window.innerHeight) {
+            winHeight = window.innerHeight;
+          }else if ((document.body) && (document.body.clientHeight)){
+            winHeight = document.body.clientHeight; 
+          }
+          inforsHeight = winHeight- topHeight-20 
+          $(".content").height(inforsHeight)
+          if (init) {//表示初始化
+            if (topHeight > winHeight/4) {
+              $(".tabsoperate").css("display","")
+              $(".tabsopen").css("display","none")
+            }else{
+              $(".tabsoperate").css("display","none")
+            };
+          }; 
+        }
+    </script>
+    <style type="text/css">
+        img{
+        width: 80%;
+      }
+      .dataInfor{
+        max-height: 100rem
+      }
+      .infor{
+        margin-top: 1em
+      }
+      .container-fluid{
+        margin-top: 1rem
+      }
+      .author{
+        margin-right: 1rem
+      }
+      .nav{
+        margin-top: 1rem
+      }
+      .content{
+        overflow-y: auto;
+      }
+      .infor-introduction{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+      .infor-title{
+        margin-top: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .tabs{
+        border-bottom: 1px solid #DBDBDB;
+        text-align: center;
+        margin:0 auto;
+      }
+      .blue{
+        color: #337ab7
+      }
+      .content-up{
+        position:absolute;
+        bottom:2rem;
+        right:2rem;
+      }
+      /* 大屏幕 */
+      @media (min-width: 1200px) {}
+ 
+      /* 平板电脑和小屏电脑之间的分辨率 */
+      @media (min-width: 768px) and (max-width: 979px) {}
+ 
+      /* 横向放置的手机和竖向放置的平板之间的分辨率 */
+      @media (max-width: 767px) {
+        img{
+          width: 100%;
+        }
+        h3{
+          font-size: 1.2rem;
+          font-weight: bolder;
+          margin:1rem 0;
+        }
+        span,p{
+          font-size: 1rem
+        }
+        .nav li{
+          width: 10rem;
+          text-align: center;
+        }
+        .nav li a{
+          font-size: 1.2rem;
+          padding: 0.5rem 0.8rem
+        }
+      }
+      
+      /* 横向放置的手机及分辨率更小的设备 */
+      @media (max-width: 480px) {
+        img{
+          width: 100%;
+        }
+        h3{
+          font-size: 1.5rem;
+          font-weight: bolder;
+          margin:1rem 0;
+        }
+        span,p{
+          font-size: 1rem
+        }
+        .nav li{
+          width: 10rem;
+          text-align: center;
+        }
+        .nav li a{
+          font-size: 1.5rem;
+          padding: 0.5rem 0.8rem
+        }
+      }
+    </style>
+</html>
