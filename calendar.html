@@ -115,9 +115,9 @@
   </form>
 </div>
 <div id="note-add" class="form-group note-add" style="padding:26px;width:400px">
-  <input class="form-control" placeholder="想到啥了" id="noteContent" name="noteContent" type="text" autofocus /><span id="btnAdd" class="glyphicon glyphicon-ok-sign"></span>
+  <input class="form-control" placeholder="想到啥了" id="noteContent" name="noteContent" type="text" autofocus /><span id="btnAdd" class="glyphicon glyphicon-ok-circle"></span>
 </div>
-<div id="notecontent" class="notecontent">
+<div id="notecontent" class="notecontent" style="padding:26px;width:400px">
   便签
 </div>
 
@@ -150,7 +150,9 @@
                 if (data.data) {
                   var inforData = data.data;
                   $(".notecontent").html("");
-                  noteContentHtml += '<div class="alert alert-info">' + inforData + '</div>';
+                  for (var i = inforData.length - 1; i >= 0; i--) {
+                    noteContentHtml += '<div class="alert alert-info">' + inforData[i] + '</div><span value="'+ i +'" class="glyphicon glyphicon-remove-circle btn-del"></span>';
+                  }
                   $(".notecontent").append(noteContentHtml)
                 };                              
               },
@@ -175,7 +177,7 @@
                data: {noteInfo:noteInfo},
                dataType: "json",
                success: function(data){
-                 if(data.status == true){
+                 if(data.status == 0){
                      location.reload(true);
                      alert("成功:" + data.msg);
                  } else {
@@ -185,6 +187,29 @@
                }
          });
       });
+
+    $(document).on("click",".btn-del",function(){
+      var id = $(this).attr('value');
+      if (!id) {
+        alert("id 不对");
+        return false;
+      }
+      $.ajax({
+        type: "POST",
+        url: "http://xiaozhuo.info/AIinfo/note/del",
+        data:{id:id},
+        dataType: "json",
+        success: function(data){
+          if(data.status == 0){
+            location.reload(true);
+            alert("成功:" + data.msg);
+          } else {
+            location.reload(true);
+            alert("失败:" + data.msg);
+          }
+        }
+      });
+    });
 </script>
 </body>
 </html>
