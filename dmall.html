@@ -16,7 +16,127 @@
     <div class="weui-tab">
       <div class="weui-tab__bd">
         <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
-          <h1>页面一</h1>
+          <!-- 搜索 -->  
+          <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+              <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入商品名称" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+              </div>
+              <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+              </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+          </div>
+          <!-- swiper -->
+          <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide"><img src="./image/6.jpg" /></div>
+              <div class="swiper-slide"><img src="./image/7.jpg" /></div>
+              <div class="swiper-slide"><img src="./image/8.jpg" /></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+
+          <!-- 分类 -->
+          <div class="weui-flex">
+              <div class="weui-flex__item">
+                <div class="placeholder">
+                  <a class="thumbnail">
+                    <img src="image/bj.jpg" alt="..." class="img-circle">
+                    <p class="text-center">白酒</p>
+                  </a>
+                </div>
+              </div>
+              <div class="weui-flex__item">
+                <div class="placeholder">
+                  <a class="thumbnail">
+                    <img src="image/hj.jpg" alt="..." class="img-circle">
+                    <p class="text-center">红酒</p>
+                  </a>
+                </div>
+              </div>
+              <div class="weui-flex__item">
+                <div class="placeholder">
+                  <a class="thumbnail">
+                    <img src="image/pj.jpg" alt="..." class="img-circle">
+                    <p class="text-center">啤酒</p>
+                  </a>
+                </div>
+              </div>
+              <div class="weui-flex__item">
+                <div class="placeholder">
+                  <a class="thumbnail">
+                    <img src="image/qt.jpg" alt="..." class="img-circle">
+                    <p class="text-center">其它</p>
+                  </a>
+                </div>
+              </div>
+          </div>
+
+          <!-- 促销1 -->
+          <div class="weui-flex">
+            <div class="weui-flex__item">
+              <a>
+                <img class="img-auto" src="image/cuxiao1.png">
+              </a>
+            </div>
+          </div>
+
+          <!-- 促销2 -->
+          <div class="weui-flex">
+            <div class="weui-flex__item">
+              <a>
+                <img class="img-auto" src="image/cuxiao2-1.png">
+              </a>
+            </div>
+            <div class="weui-flex__item">
+              <div>
+                <a>
+                <img class="img-auto" src="image/cuxiao2-2.png">
+                </a>
+              </div>
+              <div>
+                <a>
+                <img class="img-auto" src="image/cuxiao2-3.png">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 推荐 -->
+          <div class="weui-flex">
+            <div class="weui-flex__item"></div>
+            <div class="weui-flex__item">
+              <a>
+                <img class="img-auto" src="image/tuijian.png">
+              </a>
+            </div>
+            <div class="weui-flex__item"></div>
+          </div>
+
+          <!-- 首页商品推荐列表 -->
+          <div class="weui-flex">
+            <div class="weui-flex__item">
+              <a><img class="img-auto" src="image/mt1.jpg" ></a>
+            </div>
+            <div class="weui-flex__item">weui</div>
+          </div>
+          <div class="weui-flex">
+            <div class="weui-flex__item">weui</div>
+            <div class="weui-flex__item">weui</div>
+          </div>
+          <div class="weui-flex">
+            <div class="weui-flex__item">weui</div>
+            <div class="weui-flex__item">weui</div>
+          </div>
+
         </div>
         <div id="tab2" class="weui-tab__bd-item">
           <h1>页面二</h1>
@@ -31,29 +151,29 @@
 
       <div class="weui-tabbar">
         <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
-          <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
           <div class="weui-tabbar__icon">
             <img src="./images/icon_nav_button.png" alt="">
           </div>
-          <p class="weui-tabbar__label">微信</p>
+          <p class="weui-tabbar__label">首页</p>
         </a>
         <a href="#tab2" class="weui-tabbar__item">
           <div class="weui-tabbar__icon">
             <img src="./images/icon_nav_msg.png" alt="">
           </div>
-          <p class="weui-tabbar__label">通讯录</p>
+          <p class="weui-tabbar__label">分类</p>
         </a>
         <a href="#tab3" class="weui-tabbar__item">
+          <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">7</span>
           <div class="weui-tabbar__icon">
             <img src="./images/icon_nav_article.png" alt="">
           </div>
-          <p class="weui-tabbar__label">发现</p>
+          <p class="weui-tabbar__label">购物车</p>
         </a>
         <a href="#tab4" class="weui-tabbar__item">
           <div class="weui-tabbar__icon">
             <img src="./images/icon_nav_cell.png" alt="">
           </div>
-          <p class="weui-tabbar__label">我</p>
+          <p class="weui-tabbar__label">我的</p>
         </a>
       </div>
     </div>
