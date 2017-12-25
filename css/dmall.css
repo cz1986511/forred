@@ -130,5 +130,6 @@ footer a {
 
 #tab3.weui-tab__bd-item.weui-pull-to-refresh {
   position:relative;
-  top:0
+  top:-50px;
+  margin-top: 0px;
 }
