@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>订单结算</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+
+<link rel="stylesheet" href="lib/weui.min.css">
+<link rel="stylesheet" href="css/weui/jquery-weui.css">
+<link rel="stylesheet" href="css/page/settlement.css">
+
+  </head>
+
+  <body ontouchstart>
+    <div class="weui-pull-to-refresh__layer">
+      <div class='weui-pull-to-refresh__arrow'></div>
+      <div class='weui-pull-to-refresh__preloader'></div>
+      <div class="down">下拉刷新</div>
+      <div class="up">释放刷新</div>
+      <div class="refresh">正在刷新</div>
+    </div>
+
+    <header class='settlement-header'>
+      <div class="settlement-header-wrap">
+        <div class="settlement-header-inner">
+          <a href="javascript:;" class="settlement-header-op settlement-header-lt">&lt;</a>
+         <!--  <a href="javascript" class="settlement-header-op settlement-header-times">&times;</a> -->
+          <h1 class="title">订单结算</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- 收货地址 start -->
+    <div class="weui-cells__title address-title">收货地址</div>
+    <div class="weui-cells weui-cells_radio">
+      <label class="weui-cell weui-check__label" for="x11">
+        <div class="weui-cell__bd address-item">
+          <p><span class="user-name">嘻嘻</span><span  class="user-tel">180****0022</span></p>
+          <p class="address">四川省成都市高新区环球中心E1-1804丹露</p>
+        </div>
+        <div class="weui-cell__ft">
+          <input type="radio" class="weui-check" name="radio1" id="x11">
+          <span class="weui-icon-checked"></span>
+        </div>
+      </label>
+      <label class="weui-cell weui-check__label" for="x12">
+        <div class="weui-cell__bd address-item">
+          <p><span class="user-name">哈哈</span><span  class="user-tel">180****0022</span></p>
+          <p class="address">四川省成都市高新区环球中心E1-1804丹露</p>
+        </div>
+        <div class="weui-cell__ft">
+          <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+          <span class="weui-icon-checked"></span>
+        </div>
+      </label>
+      <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+        <div class="weui-cell__bd">新增地址</div>
+        <div class="weui-cell__bd" style="text-align: right; color: #e64340;">删除选中地址</div>
+      </a>
+    </div>
+    <!-- 收货地址 end -->
+
+    <!-- 商品列表 start -->
+    <div class="weui-cells__title">商品列表</div>
+    <div class="weui-cells goods-list">
+      <div class="weui-cell goods-item">
+        <div class="weui-cell__bd">
+          <p class="goods-name">标题文字</p>
+        </div>
+        <div class="weui-cell__ft">说明文字</div>
+      </div>
+      <div class="weui-cell goods-item">
+        <div class="weui-cell__bd">
+          <p class="goods-name">标题文字</p>
+        </div>
+        <div class="weui-cell__ft">说明文字</div>
+      </div>
+    </div>
+    <!-- 商品列表 end -->
+
+    <!-- 底部订单信息汇总 -->
+    <div class="weui-footer weui-footer_fixed-bottom">
+      <!-- 收货地址 -->
+      <div class="footer-address">
+        <p><span class="user-name">嘻嘻</span>&nbsp;<span  class="user-tel">180****0022</span>&nbsp;</p>
+        <p class="address">四川省成都市高新区环球中心E1-1804丹露</p>
+      </div>
+
+      <div class="total-info">
+        <span class="payable">待支付 <span class="payable-value">&yen;<span class="payable-amt" data-val="">200.22</span></span></span>
+        <a href="javascript:;" class="to-order">提交订单</a>
+      </div>
+    </div>
+
+    <script src="lib/jquery-2.1.4.js"></script>
+    <script src="lib/fastclick.js"></script>
+    
+    <script src="js/weui/swiper.js"></script>
+    <script>
+      $(function() {
+        FastClick.attach(document.body);
+      });
+    </script>
+    <script src="js/weui/jquery-weui.js"></script>
+    <script>
+      $('.delete-swipeout').click(function () {
+        $(this).parents('.weui-cell').remove()
+      })
+      $('.close-swipeout').click(function () {
+        $(this).parents('.weui-cell').swipeout('close')
+      })
+      $("#open").click( function () { $("#swipe1").swipeout('open') })
+      $("#close").click( function () { $("#swipe1").swipeout('close') })
+      $("#swipe1").click( function () { console.log('click') })
+      $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+        setTimeout(function() {
+          $(document.body).pullToRefreshDone();
+        }, 2000);
+      });
+    </script>
+    <script src="js/page/settlement.js"></script>
+  </body>
+</html>

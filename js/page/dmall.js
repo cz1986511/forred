@@ -1,3 +1,86 @@
+/*
+ *主页js逻辑
+ */
+/****************** 我的福袋 ******************/
+var luckybag = {};
+
+//清空我的福袋
+luckybag.emptyMyList = function() {
+  $('.lucky-bag-list').empty();
+  $('#no-lucky-bag').show()
+}
+//我的福袋---请求初始化数据
+luckybag.initData = function (argument) {
+  //创福袋
+  $('.create-lucky-bag').click(function(e) {
+    window.location.href="";
+  })
+  //找福袋
+  $('.find-lucky-bag').click(function(e) {
+    window.location.href="";
+  })
+  luckybag.fillMyList()
+}
+//我的福袋---填充福袋数据
+luckybag.fillMyList = function() {
+  $('#no-lucky-bag').hide()
+  var str = '';
+  str += '<div class="weui-cell weui-cell_swiped">'
+    str += '<div class="weui-cell__bd">'
+      str += '<div class="weui-cell">'
+       str += '<div class="weui-cell__hd lucky-bag-pic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" ></div>'
+        str += '<div class="weui-cell__bd">'
+          str += '<p class="lucky-bag-name">123福袋</p>'
+        str += '</div>'
+        str += '<div class="weui-cell__ft lucky-bag-price">'
+          str += '<p class="original-price">&yen;200.00</p>'
+          str += '<p class="actual-price">&yen;100.00</p>'
+        str += '</div>'
+      str += '</div>'
+    str += '</div>'
+    str += '<div class="weui-cell__ft">'
+      str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-bag-btn" href="javascript:;">删除</a>'
+      str += '<a class="weui-swiped-btn weui-swiped-btn_default close-swipeout share-bag-btn" href="javascript:;">分享</a>'
+    str += '</div>'
+  str += '</div>';
+  $('.lucky-bag-list').html(str);
+  luckybag.bindEvent()
+}
+//我的福袋---绑定事件
+luckybag.bindEvent = function() {
+  //滑动事件
+  $('.weui-cell_swiped').swipeout()
+  //删除福袋
+  $('.remove-bag-btn').click(function(e) {
+    var _this = $(this);
+    $.confirm("您确定要删除此福袋？", " ", function() {
+        $.toptip('删除成功', 'success');
+        _this.parents('.weui-cell_swiped').remove()
+        //检查福袋列表是否为空
+        luckybag.checkListIsEmpty();
+    }, function() {
+      //取消操作
+      $('.weui-cell_swiped').swipeout('close')
+    });
+  })
+  //分享福袋
+  $('.share-bag-btn').click(function(e) {
+    window.location.href="";
+  })
+}
+//检查福袋列表是否为空
+luckybag.checkListIsEmpty = function() {
+  var $parentEl = $('.lucky-bag-list .weui-cell_swiped');
+  if($parentEl.length === 0) {
+    luckybag.emptyMyList()
+  }
+}
+
+
+
+
+
+/****************** 购物车 ******************/
 //购物车
 var shopcar = {};
 //清空购物车
@@ -107,24 +190,42 @@ shopcar.toSettle = function() {
 }
 
 
+
+
+
 $(function() {
-  	// 购物车
-  	$('#shopping-cart').click(function () {
-		if($('#tab3').css('display') !== 'block') {
-			//清空购物车
-			shopcar.emptyData()
-			//初始化购物车
-			shopcar.initData()
-		}
-  	})
+  $('#my-lucky-bag').click(function () {
+    if($('#tab2').css('display') !== 'block') {
+      //清空我的福袋
+      luckybag.emptyMyList()
+      //初始化我的福袋
+      luckybag.initData()
+    }
+  })
+  $('#tab2').pullToRefresh().on('pull-to-refresh', function (done) {
+    console.log('done')
+    var self = this
+    setTimeout(function() {
+      $(self).pullToRefreshDone();
+    }, 2000)
+  })
+	// 购物车
+	$('#shopping-cart').click(function () {
+  	if($('#tab3').css('display') !== 'block') {
+  		//清空购物车
+  		shopcar.emptyData()
+  		//初始化购物车
+  		shopcar.initData()
+  	}
+	})
 
 	$('#tab3').pullToRefresh().on('pull-to-refresh', function (done) {
-        console.log('done')
-        var self = this
-        setTimeout(function() {
-          $(self).pullToRefreshDone();
-        }, 2000)
-     })
+    console.log('done')
+    var self = this
+    setTimeout(function() {
+      $(self).pullToRefreshDone();
+    }, 2000)
+  })
 })
 
 // 四则运算

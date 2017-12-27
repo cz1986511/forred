@@ -1,0 +1,80 @@
+/*
+*我的福袋
+*/
+
+// 我的福袋头部
+.lucky-bag-header {
+  margin-bottom: -20px;
+}
+.lucky-bag-header-wrap {
+  position: relative;
+  width: 100%;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: #3d4145;
+  background: #f7f7f8;
+  margin-bottom: -19px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.lucky-bag-header-inner {
+  height: 2.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+}
+.lucky-bag-header .lucky-bag-header-inner .title {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: .85rem;
+  font-weight: normal;
+  line-height: 2.2rem;
+  color: #3d4145;
+  text-align: center;
+  white-space: nowrap;
+}
+.lucky-bag-header-op {
+	line-height: 2.2em;
+    color: #3d3d3f;
+    margin-left: .5em;
+    font-size: 20px;
+}
+
+//我的福袋列表
+.lucky-bag-pic img{
+	width:20px;
+	margin-right:5px;
+	display:block;
+}
+.lucky-bag-name {
+	font-size: 14px;
+}
+.lucky-bag-price {
+
+}
+.lucky-bag-price .original-price {
+	font-size: 14px;
+	text-decoration: line-through;
+}
+.lucky-bag-price .actual-price {
+	font-size: 14px;
+	// text-decoration: line-through;
+}
+.remove-bag-btn {
+	// font-size: 14px;
+	line-height: 3em;
+}
+.share-bag-btn {
+	// font-size: 14px;
+	line-height: 3em;
+	background-color: #f8f8f8;
+	color: #000;
+}
+
+.op-btn {
+	float: right;
+    margin-right: 10px;
+}
