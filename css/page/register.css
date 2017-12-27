@@ -1,0 +1,32 @@
+/*
+ *注册页
+ */
+body, html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.register-title {
+  text-align: center;
+  font-size: 34px;
+  color: #3cc51f;
+  font-weight: 400;
+  margin: 0 15%;
+}
+
+.register-header {
+  padding: 35px 0;
+}
+
+.register-form .weui-cell_vcode{
+  padding: 10px 15px;
+}
+.to-login {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+  margin: 10px 0px;
+}
+.to-login-btn {
+  float: right;
+  color: #3cc51f;
+}

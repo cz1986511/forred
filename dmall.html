@@ -143,11 +143,93 @@
           </div>
 
         </div>
-        <div id="tab2" class="weui-tab__bd-item">
-          <h1>页面二</h1>
+        <!-- 我的福袋 -->
+        <div id="tab2" class="weui-tab__bd-item lucky-bag-wrap">
+          <div class="weui-pull-to-refresh__layer">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+          </div>
+
+          <header class='lucky-bag-header'>
+            <div class="lucky-bag-header-wrap">
+              <div class="lucky-bag-header-inner">
+                <h1 class="title">我的福袋</h1>
+              </div>
+            </div>
+          </header>
+          <div class="weui-loadmore weui-loadmore_line" id="no-lucky-bag">
+            <span class="weui-loadmore__tips">暂无福袋</span>
+          </div>
+          <div class="bd">
+            <div class="page__bd">
+              <div class="weui-cells lucky-bag-list">
+                <div class="weui-cell weui-cell_swiped">
+                  <div class="weui-cell__bd">
+                    <div class="weui-cell">
+                     <div class="weui-cell__hd lucky-bag-pic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" ></div>
+                      <div class="weui-cell__bd">
+                        <p class="lucky-bag-name">123福袋</p>
+                      </div>
+                      <div class="weui-cell__ft lucky-bag-price">
+                        <p class="original-price">&yen;200.00</p>
+                        <p class="actual-price">&yen;100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="weui-cell__ft">
+                    <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-bag-btn" href="javascript:;">删除</a>
+                    <a class="weui-swiped-btn weui-swiped-btn_default close-swipeout share-bag-btn" href="javascript:;">分享</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="op-btn">
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary create-lucky-bag">创福袋</a>
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default find-lucky-bag">找福袋</a>
+            </div>
+          </div>
         </div>
+        <!-- 购物车 -->
         <div id="tab3" class="weui-tab__bd-item">
-          <h1>页面三</h1>
+          <div class="weui-pull-to-refresh__layer">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+          </div>
+          <div class="content-padded">
+            <!-- 购物车 header -->
+            <header class='shopcar-header'>
+              <div class="shopcar-header-wrap">
+                <div class="shopcar-header-inner">
+                  <h1 class="title">我的购物车</h1>
+                </div>
+              </div>
+            </header>
+            <div class="weui-loadmore weui-loadmore_line" id="no-data-list">
+              <span class="weui-loadmore__tips">暂无商品</span>
+            </div>
+            <!-- 购物车 list -->
+            <div class="bd">
+              <div class="page__bd shopcar-bd">
+                <div class="weui-cells" id="shopcar-wrap">
+                </div>
+              </div>
+            </div>
+            <!-- 购物车 汇总、去结算 -->
+            <div class="to-settle">
+              <p class="summary">
+              <span class="total-sum"> <span  class="total-num" data-val="0">0</span> 件商品, 共计 <strong class="total-amt" data-val="0">0</strong> 元</span>
+                
+                <a href="javascript:;" class="weui-btn weui-btn_plain-primary to-settle-btn">去结算</a>
+              </p>
+            </div>
+          </div>
         </div>
         <div id="tab4" class="weui-tab__bd-item">
           <h1>页面四</h1>
@@ -161,13 +243,13 @@
           </div>
           <p class="weui-tabbar__label">首页</p>
         </a>
-        <a href="#tab2" class="weui-tabbar__item">
+        <a href="#tab2" class="weui-tabbar__item" id="my-lucky-bag">
           <div class="weui-tabbar__icon">
             <img src="./images/icon_nav_msg.png" alt="">
           </div>
-          <p class="weui-tabbar__label">分类</p>
+          <p class="weui-tabbar__label">我的福袋</p>
         </a>
-        <a href="#tab3" class="weui-tabbar__item">
+        <a href="#tab3" class="weui-tabbar__item" id="shopping-cart">
           <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">7</span>
           <div class="weui-tabbar__icon">
             <img src="./images/icon_nav_article.png" alt="">
@@ -187,6 +269,7 @@
     <script src="lib/fastclick.js"></script>
     <script src="js/weui/jquery-weui.js"></script>
     <script src="js/weui/swiper.js"></script>
+
     <script>
       $(function() {
         FastClick.attach(document.body);
@@ -198,16 +281,11 @@
       });
     </script>
 
-    <script>
-      $("#a").select({
-        title: "选择职业",
-        items: ["法官", "医生", "猎人", "学生", "记者", "其他"]
-      });
-    </script>
+    <script src="js/page/dmall.js"></script>
     <style type="text/css">
       .img-auto{
-          width:100%;
-          height:100%;
+        width:100%;
+        height:100%;
       }
     </style>
     

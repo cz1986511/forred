@@ -60,3 +60,165 @@ footer a {
   color: #999;
   text-decoration: none;
 }
+/////////////////// 我的福袋 ///////////////////
+// 我的福袋头部
+.lucky-bag-header {
+  margin-bottom: -20px;
+}
+.lucky-bag-header-wrap {
+  position: relative;
+  width: 100%;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: #3d4145;
+  background: #f7f7f8;
+  margin-bottom: -19px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.lucky-bag-header-inner {
+  height: 2.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+}
+.lucky-bag-header .lucky-bag-header-inner .title {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: .85rem;
+  font-weight: normal;
+  line-height: 2.2rem;
+  color: #3d4145;
+  text-align: center;
+  white-space: nowrap;
+}
+.lucky-bag-header-op {
+  line-height: 2.2em;
+    color: #3d3d3f;
+    margin-left: .5em;
+    font-size: 20px;
+}
+
+//我的福袋列表
+.weui-tab__bd-item.weui-pull-to-refresh {
+  position: relative;
+  top: -50px;
+  margin-top: 0px;
+}
+#tab2.weui-tab__bd-item.weui-pull-to-refresh {
+  position: relative;
+  top: -50px;
+  margin-top: 0px;
+}
+.lucky-bag-pic img{
+  // width:20px;
+  margin-right:5px;
+  display:block;
+}
+.lucky-bag-name {
+  font-size: 14px;
+}
+.lucky-bag-price .original-price {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+.lucky-bag-price .actual-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+.lucky-bag-list .remove-bag-btn {
+  line-height: 2.4em;
+}
+.lucky-bag-list .share-bag-btn {
+  line-height: 2.4em;
+  background-color: #f8f8f8;
+  color: #000;
+}
+
+.lucky-bag-wrap .op-btn {
+  position: fixed;
+  bottom: 3.3em;
+  right: 0em;
+}
+#no-lucky-bag {
+  display: none;
+  margin-top: 20em;
+}
+
+/////////////////// 购物车 ///////////////////
+// 购物车头部
+.shopcar-header {
+  margin-bottom: -20px;
+}
+.shopcar-header-wrap {
+  position: relative;
+  width: 100%;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: #3d4145;
+  background: #f7f7f8;
+  margin-bottom: -19px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.shopcar-header-inner {
+  height: 2.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+}
+.shopcar-header .shopcar-header-inner .title {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: .85rem;
+  font-weight: normal;
+  line-height: 2.2rem;
+  color: #3d4145;
+  text-align: center;
+  white-space: nowrap;
+}
+    
+//购物车列表
+.shopcar-cell {
+  border-top: 1px solid #fff;
+}
+.shopcar-cell .goods-price {
+  font-size: .9em;
+  margin-right: 6px;
+}
+
+//购物车结算
+.to-settle {
+  margin: 10px;
+}
+.summary {
+  padding: 8px;
+  background-color: white;
+  margin-top: 8px;
+}
+.summary .total-sum {
+  margin-top: 12px;
+  display: inline-block;
+}
+
+.to-settle-btn {
+  width: 5em;
+  float: right;
+}
+#no-data-list {
+  display: none;
+  margin-top: 20em;
+}
+
+#tab3.weui-tab__bd-item.weui-pull-to-refresh {
+  position:relative;
+  top:-50px;
+  margin-top: 0px;
+}
