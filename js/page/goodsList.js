@@ -7,7 +7,7 @@ var goods = {};
 //获取商品列表
 goods.getGoodsList = function() {
 	$.ajax({
-        type: "GET",
+        type: "POST",
         url: "http://xiaozhuo.info/AIinfo/item/fudailist",
         'Content-Type':'application/json;charset=UTF-8',
         data: {"itemType":"02"},
