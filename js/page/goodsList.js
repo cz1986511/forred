@@ -6,16 +6,17 @@ var goodsInfoSelected = [];
 var goods = {};
 //获取商品列表
 goods.getGoodsList = function() {
+	var reqData = JSON.stringify({"itemType":"02"})
 	$.ajax({
         type: "POST",
         url: "http://xiaozhuo.info/AIinfo/item/fudailist",
         contentType:'application/json;charset=utf-8',
-        data: {"itemType":"02"},
+        data: reqData,
         dataType: "json",
         success: function(data){
         	var resData = data;
         	if(resData.status === 0){
-
+        		goods.fillGoodsList(resData.data)
         	}
         }
 	});
