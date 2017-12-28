@@ -32,8 +32,8 @@ goods.fillGoodsList = function(data) {
 	        str += '</div>'
 	        str += '<p class="weui-grid__label goods-basic-info">'
 	          str += '<span class="goods-name">'+data[i].itemName+'</span>'
-	          str += '<span class="goods-original-price">&yen;'+absoluteDiv(data[i].itemOriginPrice,100).toFix(2)+'</span>'
-	          str += '<span class="goods-actual-price">&yen;'+absoluteDiv(data[i].itemPrice,100).toFix(2)+'</span>'
+	          str += '<span class="goods-original-price">&yen;'+absoluteDiv(data[i].itemOriginPrice,100).toFixed(2)+'</span>'
+	          str += '<span class="goods-actual-price">&yen;'+absoluteDiv(data[i].itemPrice,100).toFixed(2)+'</span>'
 	        str += '</p>'
 	    str += '</a>';
 	}
