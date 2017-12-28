@@ -17,6 +17,10 @@ goods.getGoodsList = function() {
         	var resData = data;
         	if(resData.status === 0){
         		goods.fillGoodsList(resData.data)
+        		goodsInfoInit = resData.data;
+        	}else if(resData.status === 2) {
+        		//未登录
+        		window.location.href = "http://xiaozhuo.info/login.html"
         	}
         }
 	});

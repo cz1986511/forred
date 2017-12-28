@@ -10,7 +10,7 @@ background-color: #f7f7f8;
 
 
 
-.goods-list-wrap .weui-grids {
+#goods-list-wrap .weui-grids {
 	width: 50%;
 }
 .goods-item {
@@ -37,7 +37,7 @@ background-color: #f7f7f8;
 }
 .goods-basic-info .goods-actual-price {
 	display: block;
-	font-size: 12px;
+	font-size: 14px;
 	color: #ce4646;
 	font-weight: bold;
 }
