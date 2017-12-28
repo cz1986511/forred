@@ -26,7 +26,7 @@ goods.fillGoodsList = function(data) {
 	var str = "";
 	for (var i = 0; i < data.length; i++) {
 		str += '<a href="javascript:;" class="weui-grid js_grid goods-item">'
-	        str += '<i class="weui-icon-success select-goods-item"></i>'
+	        str += '<i class="weui-icon-circle select-goods-item"></i>'
 	        str += '<div class="weui-grid__icon goods-pic">'
 	          str += '<img class="" src="'+data[i].itemDesc+'">'
 	        str += '</div>'
