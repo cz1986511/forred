@@ -8,7 +8,7 @@ var goods = {};
 goods.getGoodsList = function() {
 	$.ajax({
         type: "GET",
-        url: "http://192.168.50.250/item/fudailist",
+        url: "http://xiaozhuo.info/AIinfo/item/fudailist",
         data: {"itemType":"02"},
         dataType: "json",
         success: function(data){
