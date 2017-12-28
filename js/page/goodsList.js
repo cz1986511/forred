@@ -16,7 +16,7 @@ goods.getGoodsList = function() {
         	if(resData.status === 0){
 
         	}
-        });
+        }
 	});
 	goods.bindEvent()
 }
