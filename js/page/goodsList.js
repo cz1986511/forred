@@ -9,7 +9,7 @@ goods.getGoodsList = function() {
 	$.ajax({
         type: "POST",
         url: "http://xiaozhuo.info/AIinfo/item/fudailist",
-        'Content-Type':'application/json;charset=UTF-8',
+        'Content-Type':'application/json',
         data: {"itemType":"02"},
         dataType: "json",
         success: function(data){
