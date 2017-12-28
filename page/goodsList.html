@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>商品列表</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/weui/jquery-weui.css">
+    <link rel="stylesheet" href="../css/page/goodsList.css">
+
+  </head>
+
+  <body ontouchstart>
+
+    <header class='goods-list-header'>
+      <h1 class="goods-list-title">选择商品</h1>
+    </header>
+
+    <div class="weui-grids" id="goods-list-wrap">
+      
+
+    </div>
+
+    <div class="weui-footer weui-footer_fixed-bottom">
+      <div class="total-info">
+        <span class="payable">已选商品金额: <span class="payable-value">&yen;<span class="payable-amt" data-val="">200.22</span></span></span>
+        <a href="javascript:;" class="open-popup" id="to-preview-btn">预览福袋</a>     
+      </div>
+    </div>
+
+    <div id="full-selected-goods" class='weui-popup__container'>
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal">
+        <div class="weui-loadmore weui-loadmore_line" id="no-data-list">
+              <span class="weui-loadmore__tips">暂无商品</span>
+            </div>
+        <!-- 商品 list -->
+        <div class="bd">
+          <div class="page__bd goods-bd">
+            <div class="weui-cells" id="goods-wrap">
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-footer weui-footer_fixed-bottom">
+          <div class="op-btn-wrap">
+            <a class="close-popup" href="javascript:">关闭</a>
+            <a class="save-popup" href="javascript:">创建福袋</a>  
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <script src="../lib/jquery-2.1.4.js"></script>
+  <script src="../lib/fastclick.js"></script>
+    
+  <script src="../js/weui/swiper.js"></script>
+  <script>
+    $(function() {
+      FastClick.attach(document.body);
+    });
+  </script>
+  <script src="../js/weui/jquery-weui.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/page/goodsList.js"></script>
+
+  </body>
+</html>
