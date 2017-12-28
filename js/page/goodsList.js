@@ -21,10 +21,11 @@ goods.getGoodsList = function() {
         	}else if(resData.status === 2) {
         		//未登录
         		window.location.href = "http://xiaozhuo.info/login.html"
+        	}else {
+        		$.toptip('系统异常', 'error');
         	}
         }
 	});
-	
 }
 goods.fillGoodsList = function(data) {
 	var str = "";
