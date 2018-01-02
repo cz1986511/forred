@@ -24,13 +24,12 @@ luckybag.initData = function (argument) {
            luckybag.fillMyList(resData.data)
         }else if(resData.status === 2) {
           //未登录
-          // window.location.href = "http://xiaozhuo.info/login.html"
+          window.location.href = "http://xiaozhuo.info/login.html"
         }else {
           $.toptip('系统异常', 'error');
         }
       }
   });
- 
 }
 //我的福袋---填充福袋数据
 luckybag.fillMyList = function(data) {
@@ -41,19 +40,19 @@ luckybag.fillMyList = function(data) {
     str += '<div class="weui-cell weui-cell_swiped">'
       str += '<div class="weui-cell__bd">'
         str += '<div class="weui-cell">'
-         str += '<div class="weui-cell__hd lucky-bag-pic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" ></div>'
-          str += '<div class="weui-cell__bd">'
+         str += '<div class="weui-cell__hd lucky-bag-pic to-luckybag-detail" data-fdid="'+data[i].fdId+'"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" ></div>'
+          str += '<div class="weui-cell__bd to-luckybag-detail" data-fdid="'+data[i].fdId+'">'
             str += '<p class="lucky-bag-name">'+data[i].fdName+'</p>'
           str += '</div>'
           str += '<div class="weui-cell__ft lucky-bag-price">'
-            str += '<p class="original-price">&yen;'+(data[i].fdAmount,100).toFixed(2)+'</p>'
-            str += '<p class="actual-price">&yen;'+(data[i].fdPrice,100).toFixed(2)+'</p>'
+            str += '<p class="original-price">&yen;'+absoluteDiv(data[i].fdAmount,100).toFixed(2)+'</p>'
+            str += '<p class="actual-price">&yen;'+absoluteDiv(data[i].fdPrice,100).toFixed(2)+'</p>'
           str += '</div>'
         str += '</div>'
       str += '</div>'
       str += '<div class="weui-cell__ft">'
-        str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-bag-btn" href="javascript:;">删除</a>'
-        str += '<a class="weui-swiped-btn weui-swiped-btn_default close-swipeout share-bag-btn" href="javascript:;">分享</a>'
+        str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-bag-btn" href="javascript:;" data-fdid="'+data[i].fdId+'">删除</a>'
+        str += '<a class="weui-swiped-btn weui-swiped-btn_default close-swipeout share-bag-btn" href="javascript:;" data-fdid="'+data[i].fdId+'">分享</a>'
       str += '</div>'
     str += '</div>';
   }
@@ -69,10 +68,32 @@ luckybag.bindEvent = function() {
   $('.remove-bag-btn').click(function(e) {
     var _this = $(this);
     $.confirm("您确定要删除此福袋？", " ", function() {
-        $.toptip('删除成功', 'success');
-        _this.parents('.weui-cell_swiped').remove()
-        //检查福袋列表是否为空
-        luckybag.checkListIsEmpty();
+        var reqData = {
+            "fdId":_this.attr('data-fdid'),
+            "actionType":"99" 
+        }
+        reqData = JSON.stringify(reqData)
+        $.ajax({
+          type: "POST",
+          url: "http://xiaozhuo.info/AIinfo/fudai/update",
+          contentType:'application/json;charset=utf-8',
+          data: reqData,
+          dataType: "json",
+          success: function(data){
+            var resData = data;
+            if(resData.status === 0){
+              $.toptip('删除成功', 'success');
+              _this.parents('.weui-cell_swiped').remove()
+              //检查福袋列表是否为空
+              luckybag.checkListIsEmpty();
+            }else if(resData.status === 2) {
+              //未登录
+              window.location.href = "http://xiaozhuo.info/login.html"
+            }else {
+              $.toptip('删除失败', 'error');
+            }
+          }
+        });
     }, function() {
       //取消操作
       $('.weui-cell_swiped').swipeout('close')
@@ -80,8 +101,38 @@ luckybag.bindEvent = function() {
   })
   //分享福袋
   $('.share-bag-btn').click(function(e) {
-    window.location.href="";
+    var _this = $(this);
+    var fdId = _this.attr('data-fdid');
+    var reqData = {
+          "fdId":fdId,
+          "actionType":"02"
+      }
+      reqData = JSON.stringify(reqData)
+      $.ajax({
+        type: "POST",
+        url: "http://xiaozhuo.info/AIinfo/fudai/update",
+        contentType:'application/json;charset=utf-8',
+        data: reqData,
+        dataType: "json",
+        success: function(data){
+          var resData = data;
+          if(resData.status === 0){
+            window.location.href="http://xiaozhuo.info/luckyBagDetail.html?fdId="+fdId;
+          }else if(resData.status === 2) {
+            //未登录
+            window.location.href = "http://xiaozhuo.info/login.html"
+          }else {
+            $.toptip('删除失败', 'error');
+          }
+        }
+      });
   })
+  //进入福袋详情页
+  $('.to-luckybag-detail').click(function(e) {
+    var _this = $(this);
+    var fdId = _this.attr('data-fdid');
+    window.location.href="http://xiaozhuo.info/luckyBagDetail.html?fdId="+fdId;
+  }
 }
 //检查福袋列表是否为空
 luckybag.checkListIsEmpty = function() {
