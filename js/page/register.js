@@ -8,11 +8,12 @@
 			if(register.checkVal()) {
 				var tel = $('#tel').val();
  				var password = $('#password').val();
- 				var userName = $('#userName').val()
+ 				var userName = $('#userName').val();
  				var reqData = {
 					"tel":tel,
 					"password":$.md5(password),
-					"userName":userName
+					"userName":userName,
+					"type":'2'
 				}
 				reqData = JSON.stringify(reqData)
 				registerFlag = false;
