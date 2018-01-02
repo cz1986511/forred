@@ -117,7 +117,7 @@ luckybag.bindEvent = function() {
         success: function(data){
           var resData = data;
           if(resData.status === 0){
-            window.location.href="http://xiaozhuo.info/luckyBagDetail.html?fdId="+fdId;
+            window.location.href="http://xiaozhuo.info/page/luckyBagDetail.html?fdId="+fdId;
           }else if(resData.status === 2) {
             //未登录
             window.location.href = "http://xiaozhuo.info/login.html"
@@ -131,7 +131,7 @@ luckybag.bindEvent = function() {
   $('.to-luckybag-detail').click(function(e) {
     var _this = $(this);
     var fdId = _this.attr('data-fdid');
-    window.location.href="http://xiaozhuo.info/luckyBagDetail.html?fdId="+fdId;
+    window.location.href="http://xiaozhuo.info/page/luckyBagDetail.html?fdId="+fdId;
   })
 }
 //检查福袋列表是否为空

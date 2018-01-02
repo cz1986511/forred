@@ -101,6 +101,7 @@ background-color: #f7f7f8;
 	width: 50%;
     font-size: 16px;
     color: #0bb20c;
+    display: inline-block;
 }
 #full-selected-goods .goods-selected-total-info {
     text-align: left;
