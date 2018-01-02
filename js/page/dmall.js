@@ -11,19 +11,12 @@ luckybag.emptyMyList = function() {
 }
 //我的福袋---请求初始化数据
 luckybag.initData = function (argument) {
-  //创福袋
-  // $('.create-lucky-bag').click(function(e) {
-  //   window.location.href="";
-  // })
-  // //找福袋
-  // $('.find-lucky-bag').click(function(e) {
-  //   window.location.href="";
-  // })
+  var reqData = JSON.stringify({"isMy":"02"})
   $.ajax({
       type: "POST",
       url: "http://xiaozhuo.info/AIinfo/fudai/list",
       contentType:'application/json;charset=utf-8',
-      data: {"isMy":"02"},
+      data: reqData,
       dataType: "json",
       success: function(data){
         var resData = data;
