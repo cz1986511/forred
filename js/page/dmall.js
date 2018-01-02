@@ -189,11 +189,8 @@ shopcar.toSettle = function() {
 	console.log('去结算')
 }
 
-
-
-
-
 $(function() {
+
   $('#my-lucky-bag').click(function () {
     if($('#tab2').css('display') !== 'block') {
       //清空我的福袋
@@ -226,5 +223,15 @@ $(function() {
       $(self).pullToRefreshDone();
     }, 2000)
   })
+
+  //获取地址栏
+  if(window.location.hash) {
+    var hash = window.location.hash;
+    if(hash === '#tab3') {
+      $('#shopping-cart').trigger("click");
+    }else if(hash === '#tab2') {
+      $('#my-lucky-bag').trigger("click");
+    }
+  }
 })
 

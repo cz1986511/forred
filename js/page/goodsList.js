@@ -61,6 +61,7 @@ goods.selectGoods = function(_this) {
 		$selectEl.addClass('weui-icon-success').removeClass('weui-icon-circle')
 		//将商品添加到选中列表中
 		var sIndex = findArrayElem(goodsInfoInit,goodsId,'itemId')
+		goodsInfoInit[sIndex].itemNumber = 1;
 		if(sIndex >= 0) {
 			goodsInfoSelected.push(goodsInfoInit[sIndex])
 		}
@@ -118,26 +119,29 @@ goods.findArrayElem = function(array,val,attr){
 goods.fillSelectedData = function() {
 	$('#no-data-list').hide()
 	var str = '';
-	str = '<div class="weui-cell weui-cell_swiped">'
-      str += '<div class="weui-cell__bd">'
-        str += '<div class="weui-cell goods-cell">'
-            str += '<div class="weui-cell__bd">'
-              str += '<p>清风纸巾12包装</p>'
-            str += '</div>'
-            str += '<div class="weui-cell__ft">'
-              str += '<span class="goods-price">￥<span class="goods-price-val" data-val="2400">24.00</span></span>'
-              str += '<div class="weui-count">'
-                str += '<a class="weui-count__btn weui-count__decrease"></a>'
-                str += '<input class="weui-count__number goods-num" type="number" value="1" readonly="true"/>'
-                str += '<a class="weui-count__btn weui-count__increase"></a>'
-              str += '</div>'
-            str += '</div>'
-        str += '</div>'
-      str += '</div>'
-      str += '<div class="weui-cell__ft">'
-        str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-goods-item" href="javascript:">删除</a>'
-      str += '</div>'
-    str += '</div>';
+	for (var i = 0; i < goodsInfoSelected.length; i++) {
+		str += '<div class="weui-cell weui-cell_swiped">'
+	      str += '<div class="weui-cell__bd">'
+	        str += '<div class="weui-cell goods-cell" goods-id="'+goodsInfoSelected[i].itemId+'">'
+	            str += '<div class="weui-cell__bd">'
+	              str += '<p>'+goodsInfoSelected[i].itemName+'</p>'
+	            str += '</div>'
+	            str += '<div class="weui-cell__ft">'
+	              str += '<span class="goods-price">￥<span class="goods-price-val" data-val="">'+absoluteDiv(goodsInfoSelected[i].itemPrice,100).toFixed(2)+'</span></span>'
+	              str += '<div class="weui-count">'
+	                str += '<a class="weui-count__btn weui-count__decrease"></a>'
+	                str += '<input class="weui-count__number goods-num" type="number" value="'+goodsInfoSelected[i].itemNumber+'" readonly="true"/>'
+	                str += '<a class="weui-count__btn weui-count__increase"></a>'
+	              str += '</div>'
+	            str += '</div>'
+	        str += '</div>'
+	      str += '</div>'
+	      str += '<div class="weui-cell__ft">'
+	        str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-goods-item" href="javascript:">删除</a>'
+	      str += '</div>'
+	    str += '</div>';
+	}
+	
     $('#goods-wrap').html(str);
     goods.calSelectedTotalAmtNum()
     goods.bindSelectedEvent()
@@ -151,26 +155,40 @@ goods.bindSelectedEvent = function() {
   	var MAX = 999, MIN = 1;
   	$('.weui-count__decrease').click(function (e) {
     	var $input = $(e.currentTarget).parent().find('.weui-count__number');
+    	var $goodsItem = $input.parents('.goods-cell');
+    	var goodsId = $goodsItem.attr('goods-id');
     	var number = parseInt($input.val() || "0") - 1
     	if (number < MIN) number = MIN;
     	$input.val(number)
-    	goods.calSelectedTotalAmtNum()
+    	var sIndex = goods.findArrayElem(goodsInfoSelected,goodsId,'itemId');
+    	goodsInfoSelected[sIndex].itemNumber = number;
+    	goods.calSelectedTotalAmtNum();
   	})
   	$('.weui-count__increase').click(function (e) {
     	var $input = $(e.currentTarget).parent().find('.weui-count__number');
+    	var $goodsItem = $input.parents('.goods-cell');
+    	var goodsId = $goodsItem.attr('goods-id');
     	var number = parseInt($input.val() || "0") + 1
     	if (number > MAX) number = MAX;
     	$input.val(number)
+    	var sIndex = goods.findArrayElem(goodsInfoSelected,goodsId,'itemId');
+    	goodsInfoSelected[sIndex].itemNumber = number;
     	goods.calSelectedTotalAmtNum()
   	})
   	//删除商品
   	$('.remove-goods-item').click(function(e) {
   		var _this = $(this);
   		$.confirm("您确定要删除此商品？", " ", function() {
+  			var $goodsItem = _this.parents('.goods-cell');
+    		var goodsId = $goodsItem.attr('goods-id');
+    		var sIndex = goods.findArrayElem(goodsInfoSelected,goodsId,'itemId');
+    		goodsInfoSelected.splice(sIndex,1)
+
             $.toptip('删除成功', 'success');
             _this.parents('.weui-cell').remove()
             //检查购物车列表是否为空
             goods.checkGoodsListIsEmpty();
+            goods.calSelectedTotalAmtNum();
         }, function() {
           //取消操作
           $('.weui-cell_swiped').swipeout('close')
@@ -181,14 +199,18 @@ goods.bindSelectedEvent = function() {
 goods.calSelectedTotalAmtNum = function() {
 	var totalAmt = 0;
 	var totalNum = 0;
-	var $parentEl = $('#goods-wrap .weui-cell_swiped');
-	$parentEl.each(function(index,element){
-	    var amt = parseFloat($(element).find('.goods-price-val').attr('data-val'));
-	    var num = parseFloat($(element).find('.goods-num').val());
-	    var goodsTotalPrice = absoluteMul(amt,num)
-	    totalAmt = absoluteAdd(goodsTotalPrice,totalAmt)
-	    totalNum = absoluteAdd(num,totalNum)
-	});
+	for (var i = 0; i < goodsInfoSelected.length; i++) {
+		totalAmt = absoluteAdd(goodsInfoSelected[i].itemPrice,totalAmt)
+		totalNum = absoluteAdd(goodsInfoSelected[i].itemNumber,totalNum)
+	}
+	// var $parentEl = $('#goods-wrap .weui-cell_swiped');
+	// $parentEl.each(function(index,element){
+	//     var amt = parseFloat($(element).find('.goods-price-val').attr('data-val'));
+	//     var num = parseFloat($(element).find('.goods-num').val());
+	//     var goodsTotalPrice = absoluteMul(amt,num)
+	//     totalAmt = absoluteAdd(goodsTotalPrice,totalAmt)
+	//     totalNum = absoluteAdd(num,totalNum)
+	// });
 	$('.total-amt').attr('data-val',totalAmt);
 	$('.total-amt').text(absoluteDiv(totalAmt,100).toFixed(2))
 	$('.total-num').text(totalNum)
@@ -199,6 +221,54 @@ goods.checkGoodsListIsEmpty = function() {
 	if($parentEl.length === 0) {
 		goods.emptyData()
 	}
+}
+goods.createLuckyBag = function(name) {
+	var ajaxFlag = true;
+	var fdName = name;
+	var reqData = {
+        "fdName":fdName,
+        "fudaiItemInfos":[]
+	};
+	for (var i = 0; i < goodsInfoSelected.length; i++) {
+		reqData.fudaiItemInfos[i] = {
+			"fdItemId":goodsInfoSelected[i].itemId,
+			"fdItemNumber":goodsInfoSelected[i].itemNumber
+		}
+	}
+	
+	$.ajax({
+        type: "POST",
+        url: "http://xiaozhuo.info/AIinfo/item/add",
+        contentType:'application/json;charset=utf-8',
+        data: reqData,
+        dataType: "json",
+        success: function(data){
+        	var resData = data;
+        	if(resData.status === 0){
+        		window.location.href = "http://xiaozhuo.info/dmall.html#tab2"
+        	}else if(resData.status === 2) {
+        		//未登录
+        		window.location.href = "http://xiaozhuo.info/login.html"
+        	}else {
+        		$.toptip('系统异常', 'error');
+        	}
+        }
+	});
+}
+//创建福袋名称
+goods.addLuckyBagName = function() {
+	$.prompt({
+      text: " ",
+      title: "请输入福袋名称:",
+      empty: false, // 是否允许为空
+      onOK: function(text) {
+        console.log("onOK",text);
+        goods.createLuckyBag(text)
+      },
+      onCancel: function() {
+        console.log("取消了");
+      }
+    });
 }
 $(function () {
 	goods.getGoodsList()
@@ -215,5 +285,11 @@ $(function () {
 		goods.emptyData()
 		$("#full-selected-goods").popup();
 		goods.fillSelectedData()
+	})
+	//创建福袋
+	$('.save-popup').click(function(){
+		var _this = $(this);
+		// if(goodsInfoSelected.length == 0) return false;
+		goods.addLuckyBagName()
 	})
 })

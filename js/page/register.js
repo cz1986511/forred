@@ -12,8 +12,7 @@
  				var reqData = {
 					"tel":tel,
 					"password":$.md5(password),
-					"userName":userName,
-					"type":'2'
+					"userName":userName
 				}
 				reqData = JSON.stringify(reqData)
 				registerFlag = false;
