@@ -30,3 +30,12 @@ function absoluteDiv(num1,num2){
 	  return absoluteMul((r1/r2),pow(10,t2-t1));   
 	}   
 }
+// 获取url上的参数
+function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
