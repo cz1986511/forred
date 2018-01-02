@@ -132,7 +132,7 @@ luckybag.bindEvent = function() {
     var _this = $(this);
     var fdId = _this.attr('data-fdid');
     window.location.href="http://xiaozhuo.info/luckyBagDetail.html?fdId="+fdId;
-  }
+  })
 }
 //检查福袋列表是否为空
 luckybag.checkListIsEmpty = function() {
