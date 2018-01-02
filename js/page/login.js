@@ -23,13 +23,10 @@
 			        success: function(data){
 			        	var resData = data;
 			        	if(resData.status === 0){
-			        		// goods.fillGoodsList(resData.data)
-			        		// goodsInfoInit = resData.data;
-			        	}else if(resData.status === 2) {
-			        		// //未登录
-			        		// window.location.href = "http://xiaozhuo.info/login.html"
+			        		window.location.href = "http://xiaozhuo.info/dmall.html"
 			        	}else {
-			        		$.toptip('系统异常', 'error');
+			        		var msg = resData.msg || '系统异常'
+			        		$.toptip(msg, 'error');
 			        	}
 			        	loginFlag = true;
 			        }
@@ -40,8 +37,8 @@
  })
  var login = {};
  login.checkVal = function() {
- 	var tel = $('#tel').val();
- 	var password = $('#password').val();
+ 	var tel = $.trim($('#tel').val());
+ 	var password = $.trim($('#password').val());
     if(!tel) {
     	$.toptip('请输入手机号');
     	return false;
