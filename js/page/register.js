@@ -38,7 +38,7 @@
 	})
 
 	$('#switch-password').click(function(){
-		if($(this).attr("checked")) {
+		if($(this).is(":checked")) {
 			$('#password').prop('type','text');
 		}else {
 			$('#password').prop('type','password');
