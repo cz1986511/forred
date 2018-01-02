@@ -2,26 +2,15 @@
 *福袋详情
 */
 .lucky-bag-header {
-  margin-bottom: -20px;
 }
 .lucky-bag-header-wrap {
-  position: relative;
-  width: 100%;
-  font-size: .85rem;
-  line-height: 1.5;
-  color: #3d4145;
-  background: #f7f7f8;
-  margin-bottom: -19px;
-  border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    width: 100%;
+    color: #3d4145;
+    background: #f7f7f8;
+    border-bottom: 1px solid #e5e5e5;
 }
-.lucky-bag-header-inner {
-  height: 2.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  text-align: center;
-}
+
 .lucky-bag-header .lucky-bag-header-inner .title {
   position: absolute;
   display: block;
@@ -35,10 +24,8 @@
   white-space: nowrap;
 }
 .lucky-bag-header-op {
-	line-height: 1.4em;
-    color: #3d3d3f;
-    margin-left: .5em;
-    font-size: 20px;
+  color: #3d3d3f;
+  margin-left: .5em;
 }
 
 
@@ -81,8 +68,10 @@
 }
 .lb-actual-price {
 	font-style: normal;
-    font-size: 1.6em;
-    color: #000;
+  font-size: 1.6em;
+  color: #000;
+  color: #ce4646;
+  margin-right: 12px;
 }
 
 //分享福袋

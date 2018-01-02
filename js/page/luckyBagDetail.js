@@ -65,4 +65,12 @@ $(function() {
 	    $("#share-it-pop").hide(); 
 	})
 	luckyBagDetail.getData()
+	$('.lucky-bag-header-op').click(function(){
+		var skipFlag = getQueryString('skipFlag');
+		if(skipFlag == 0) {
+			window.location.href = "http://xiaozhuo.info/dmall.html#tab2"
+		}else if(skipFlag == 1) {
+			window.location.href = "http://xiaozhuo.info/page/luckyBagList.html"
+		}
+	})
 })

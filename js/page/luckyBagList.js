@@ -5,7 +5,27 @@ var sharedLuckyBag = {};
 
 //福袋列表初始化
 sharedLuckyBag.initList = function() {
-	sharedLuckyBag.fillList()
+	var reqData = JSON.stringify({'status':'02'});
+	$.ajax({
+        type: "POST",
+        url: "http://xiaozhuo.info/AIinfo/fudai/list",
+        contentType:'application/json;charset=utf-8',
+        data: reqData,
+        dataType: "json",
+        success: function(data){
+        	var resData = data;
+        	if(resData.status === 0){
+        		console.log(resData)
+        		sharedLuckyBag.fillList()
+        	}else if(resData.status === 2) {
+        		//未登录
+        		window.location.href = "http://xiaozhuo.info/login.html"
+        	}else {
+        		$.toptip('系统异常', 'error');
+        	}
+        }
+	});
+	
 }
 //填充福袋列表
 sharedLuckyBag.fillList = function() {
