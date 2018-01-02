@@ -12,37 +12,59 @@ luckybag.emptyMyList = function() {
 //我的福袋---请求初始化数据
 luckybag.initData = function (argument) {
   //创福袋
-  $('.create-lucky-bag').click(function(e) {
-    window.location.href="";
-  })
-  //找福袋
-  $('.find-lucky-bag').click(function(e) {
-    window.location.href="";
-  })
-  luckybag.fillMyList()
+  // $('.create-lucky-bag').click(function(e) {
+  //   window.location.href="";
+  // })
+  // //找福袋
+  // $('.find-lucky-bag').click(function(e) {
+  //   window.location.href="";
+  // })
+  $.ajax({
+      type: "POST",
+      url: "http://xiaozhuo.info/AIinfo/fudai/list",
+      contentType:'application/json;charset=utf-8',
+      data: {"isMy":"02"},
+      dataType: "json",
+      success: function(data){
+        var resData = data;
+        if(resData.status === 0){
+           luckybag.fillMyList(resData.data)
+        }else if(resData.status === 2) {
+          //未登录
+          // window.location.href = "http://xiaozhuo.info/login.html"
+        }else {
+          $.toptip('系统异常', 'error');
+        }
+      }
+  });
+ 
 }
 //我的福袋---填充福袋数据
-luckybag.fillMyList = function() {
+luckybag.fillMyList = function(data) {
+  var data = data;
   $('#no-lucky-bag').hide()
   var str = '';
-  str += '<div class="weui-cell weui-cell_swiped">'
-    str += '<div class="weui-cell__bd">'
-      str += '<div class="weui-cell">'
-       str += '<div class="weui-cell__hd lucky-bag-pic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" ></div>'
-        str += '<div class="weui-cell__bd">'
-          str += '<p class="lucky-bag-name">123福袋</p>'
-        str += '</div>'
-        str += '<div class="weui-cell__ft lucky-bag-price">'
-          str += '<p class="original-price">&yen;200.00</p>'
-          str += '<p class="actual-price">&yen;100.00</p>'
+  for (var i = 0; i < data.length; i++) {
+    str += '<div class="weui-cell weui-cell_swiped">'
+      str += '<div class="weui-cell__bd">'
+        str += '<div class="weui-cell">'
+         str += '<div class="weui-cell__hd lucky-bag-pic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" ></div>'
+          str += '<div class="weui-cell__bd">'
+            str += '<p class="lucky-bag-name">福袋123</p>'
+          str += '</div>'
+          str += '<div class="weui-cell__ft lucky-bag-price">'
+            str += '<p class="original-price">&yen;200.00</p>'
+            str += '<p class="actual-price">&yen;100.00</p>'
+          str += '</div>'
         str += '</div>'
       str += '</div>'
-    str += '</div>'
-    str += '<div class="weui-cell__ft">'
-      str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-bag-btn" href="javascript:;">删除</a>'
-      str += '<a class="weui-swiped-btn weui-swiped-btn_default close-swipeout share-bag-btn" href="javascript:;">分享</a>'
-    str += '</div>'
-  str += '</div>';
+      str += '<div class="weui-cell__ft">'
+        str += '<a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout remove-bag-btn" href="javascript:;">删除</a>'
+        str += '<a class="weui-swiped-btn weui-swiped-btn_default close-swipeout share-bag-btn" href="javascript:;">分享</a>'
+      str += '</div>'
+    str += '</div>';
+  }
+  
   $('.lucky-bag-list').html(str);
   luckybag.bindEvent()
 }

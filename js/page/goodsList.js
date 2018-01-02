@@ -273,24 +273,17 @@ goods.addLuckyBagName = function() {
 }
 $(function () {
 	goods.getGoodsList()
-
- 	// $(document).on("open", ".weui-popup-modal", function() {
-  //   	console.log("open popup");
-  // 	}).on("close", ".weui-popup-modal", function() {
-  //   	console.log("close popup");
-  // 	});
   	//预览福袋
   	$('#to-preview-btn').click(function(e){
   		//判断是否选择商品
-  		// if(!goods.checkSelected()) return false;
+  		if(!goods.checkSelected()) return false;
 		goods.emptyData()
 		$("#full-selected-goods").popup();
 		goods.fillSelectedData()
 	})
 	//创建福袋
 	$('.save-popup').click(function(){
-		var _this = $(this);
-		// if(goodsInfoSelected.length == 0) return false;
+		if(goodsInfoSelected.length == 0) return false;
 		goods.addLuckyBagName()
 	})
 })
