@@ -28,7 +28,9 @@
   margin-left: .5em;
 }
 
-
+.goods-panel {
+  margin-top: 0;
+}
 .item-name {
   font-size: 14px;
 }
