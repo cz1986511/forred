@@ -55,12 +55,12 @@ goods.selectGoods = function(_this) {
 	if (stag) {
 		$selectEl.removeClass('weui-icon-success').addClass('weui-icon-circle');
 		//将商品从选中列表中删除
-		var sIndex = findArrayElem(goodsInfoSelected,goodsId,'itemId')
+		var sIndex = goods.findArrayElem(goodsInfoSelected,goodsId,'itemId')
 		goodsInfoSelected.splice(sIndex,1)
 	}else {
 		$selectEl.addClass('weui-icon-success').removeClass('weui-icon-circle')
 		//将商品添加到选中列表中
-		var sIndex = findArrayElem(goodsInfoInit,goodsId,'itemId')
+		var sIndex = goods.findArrayElem(goodsInfoInit,goodsId,'itemId')
 		goodsInfoInit[sIndex].itemNumber = 1;
 		if(sIndex >= 0) {
 			goodsInfoSelected.push(goodsInfoInit[sIndex])

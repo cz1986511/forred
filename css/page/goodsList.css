@@ -10,11 +10,12 @@ background-color: #f7f7f8;
 
 
 
-#goods-list-wrap .weui-grids {
-	width: 50%;
+#goods-list-wrap {
+	margin-bottom: 43px;
 }
 .goods-item {
 	padding: 7px 0px;
+    width: 50%;
 }
 .select-goods-item {
 	position: absolute;
