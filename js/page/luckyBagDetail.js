@@ -7,7 +7,6 @@ $(function() {
         type: "GET",
         url: "http://xiaozhuo.info/AIinfo/fudai/"+fdId,
         contentType:'application/json;charset=utf-8',
-        data: reqData,
         dataType: "json",
         success: function(data){
         	var resData = data;
