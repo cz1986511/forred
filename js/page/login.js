@@ -34,6 +34,14 @@
 			}
 		}
 	})
+	
+	$('#switch-password').click(function(){
+		if($(this).attr("checked")) {
+			$('#password').prop('type','text');
+		}else {
+			$('#password').prop('type','password');
+		}
+	})
  })
  var login = {};
  login.checkVal = function() {
