@@ -37,7 +37,7 @@ sharedLuckyBag.fillList = function(data) {
             str += '<div class="weui-media-box__bd">'
               str += '<h4 class="weui-media-box__title">'+data[i].fdName+'</h4>'
               str += '<p class="weui-media-box__desc">'
-              str += '<span class="original-price">&yen;'absoluteDiv(data[i].fdAmount,100).toFixed(2)'</span>'
+              str += '<span class="original-price">&yen;'+absoluteDiv(data[i].fdAmount,100).toFixed(2)+'</span>'
               str += '<span class="actual-price">&yen;'+absoluteDiv(data[i].fdPrice,100).toFixed(2)+'</span>'
               str += '</p>'
             str += '</div>'
