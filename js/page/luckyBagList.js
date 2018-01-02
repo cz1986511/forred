@@ -103,10 +103,20 @@ sharedLuckyBag.toLuckyBagDetail = function(fdId) {
 //事件绑定
 sharedLuckyBag.bindEvent = function() {
 	$('.add-lucky-bag').click(function(event) {
-		var fdId = $(this).attr('data-fdid')
-		sharedLuckyBag.addMyLuckyBag(fdId);
+		$.confirm({
+		  title: '确定添加？',
+		  text: '您确定将此福袋加入“我的福袋”？',
+		  onOK: function () {
+		    var fdId = $(this).attr('data-fdid')
+			sharedLuckyBag.addMyLuckyBag(fdId);
+		  },
+		  onCancel: function () {
+		  	console.log('取消添加')
+		  }
+		});
 		event.stopPropagation();
 	})
+	
 	$('.lucky-bag-item').click(function(e) {
 		var fdId = $(this).attr('data-fdid')
 		sharedLuckyBag.toLuckyBagDetail(fdId)
