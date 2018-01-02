@@ -236,7 +236,7 @@ goods.createLuckyBag = function(name) {
 			"fdItemNumber":goodsInfoSelected[i].itemNumber
 		}
 	}
-	
+	reqData = JSON.stringify(reqData)
 	$.ajax({
         type: "POST",
         url: "http://xiaozhuo.info/AIinfo/item/add",
