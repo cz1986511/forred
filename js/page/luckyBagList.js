@@ -5,7 +5,7 @@ var sharedLuckyBag = {};
 
 //福袋列表初始化
 sharedLuckyBag.initList = function() {
-	var reqData = JSON.stringify({'status':'02'});
+	var reqData = JSON.stringify({'fdStatus':'02'});
 	$.ajax({
         type: "POST",
         url: "http://xiaozhuo.info/AIinfo/fudai/list",
