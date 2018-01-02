@@ -57,8 +57,8 @@ luckyBagDetail.calAmt = function(data) {
 		var itemprice = absoluteMul(data[i].fdItemPrice,data[i].fdItemNumber)
 		tmpPrice = absoluteAdd(tmpPrice,itemprice) 
 	}
-	$('.lb-original-price').text('&yen;'+absoluteDiv(tmpOPrice,100).toFixed(2))
-	$('.lb-actual-price').text('&yen;'+absoluteDiv(itemprice,100).toFixed(2))
+	$('.lb-original-price').html('&yen;'+absoluteDiv(tmpOPrice,100).toFixed(2))
+	$('.lb-actual-price').html('&yen;'+absoluteDiv(itemprice,100).toFixed(2))
 }
 $(function() {
 	$("#share-it-pop").on("click", function(){
