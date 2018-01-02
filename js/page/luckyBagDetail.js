@@ -2,7 +2,7 @@ $(function() {
 	$("#share-it-pop").on("click", function(){
 	    $("#share-it-pop").hide(); 
 	})
-	var fdId = getQueryString(fdId);
+	var fdId = getQueryString('fdId');
 	$.ajax({
         type: "GET",
         url: "http://xiaozhuo.info/AIinfo/fudai/"+fdId,
