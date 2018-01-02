@@ -33,7 +33,7 @@ luckyBagDetail.fillData = function(data) {
 	for (var i = 0; i < itemList.length; i++) {
 		str += '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">'
             str += '<div class="weui-media-box__hd">'
-              str += '<img class="weui-media-box__thumb" src="" alt="">'
+              str += '<img class="weui-media-box__thumb" src="'+itemList[i].fdItemPic+'" alt="">'
             str += '</div>'
             str += '<div class="weui-media-box__bd">'
               str += '<h4 class="weui-media-box__title item-name">'+itemList[i].fdItemName+'</h4>'
@@ -58,7 +58,7 @@ luckyBagDetail.calAmt = function(data) {
 		tmpPrice = absoluteAdd(tmpPrice,itemprice) 
 	}
 	$('.lb-original-price').html('&yen;'+absoluteDiv(tmpOPrice,100).toFixed(2))
-	$('.lb-actual-price').html('&yen;'+absoluteDiv(itemprice,100).toFixed(2))
+	$('.lb-actual-price').html('&yen;'+absoluteDiv(tmpPrice,100).toFixed(2))
 }
 $(function() {
 	$("#share-it-pop").on("click", function(){
