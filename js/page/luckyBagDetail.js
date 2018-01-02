@@ -51,10 +51,10 @@ luckyBagDetail.calAmt = function(data) {
 	var tmpOPrice = 0;
 	var tmpPrice = 0;
 	for (var i = 0; i < data.length; i++) {
-		var itemOprice = absoluteMul(data[i].fdItemOriginPrice,data[i].fdItemName)
+		var itemOprice = absoluteMul(data[i].fdItemOriginPrice,data[i].fdItemNumber)
 		tmpOPrice = absoluteAdd(tmpOPrice,itemOprice) 
 
-		var itemprice = absoluteMul(data[i].fdItemPrice,data[i].fdItemName)
+		var itemprice = absoluteMul(data[i].fdItemPrice,data[i].fdItemNumber)
 		tmpPrice = absoluteAdd(tmpPrice,itemprice) 
 	}
 	$('.lb-original-price').text('&yen;'+absoluteDiv(tmpOPrice,100).toFixed(2))
