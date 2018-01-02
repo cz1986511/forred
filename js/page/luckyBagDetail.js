@@ -36,7 +36,7 @@ luckyBagDetail.fillData = function(data) {
               str += '<img class="weui-media-box__thumb" src="" alt="">'
             str += '</div>'
             str += '<div class="weui-media-box__bd">'
-              str += '<h4 class="weui-media-box__title">'+itemList[i].fdItemName+'</h4>'
+              str += '<h4 class="weui-media-box__title item-name">'+itemList[i].fdItemName+'</h4>'
               str += '<p class="weui-media-box__desc">'
                 str += '<span class="goods-num">&times;'+itemList[i].fdItemNumber+'</span>'
                 str += '<span class="goods-price goods-actual-price">&yen;'+absoluteDiv(itemList[i].fdItemOriginPrice,100).toFixed(2)+'</span>'

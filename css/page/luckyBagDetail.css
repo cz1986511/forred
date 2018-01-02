@@ -42,17 +42,24 @@
 }
 
 
-
+.item-name {
+  font-size: 14px;
+}
 .goods-price {
 	margin-left: .5em;
 	float: right;
+  
 }
 .goods-original-price {
   text-decoration: line-through;
 }
+.goods-actual-price {
+  font-size: 14px;
+  color: #ce4646;
+}
 .price-total {
 	border-top: 1px solid #eee;
-    padding-top: .5em;
+  padding-top: .5em;
 }
 .price-text {
 	float: left;
