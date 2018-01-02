@@ -239,7 +239,7 @@ goods.createLuckyBag = function(name) {
 	reqData = JSON.stringify(reqData)
 	$.ajax({
         type: "POST",
-        url: "http://xiaozhuo.info/AIinfo/item/add",
+        url: "http://xiaozhuo.info/AIinfo/fudai/add",
         contentType:'application/json;charset=utf-8',
         data: reqData,
         dataType: "json",
