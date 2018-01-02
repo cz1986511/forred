@@ -36,7 +36,7 @@ goods.fillGoodsList = function(data) {
 	          str += '<img class="" src="'+data[i].itemDesc+'">'
 	        str += '</div>'
 	        str += '<p class="weui-grid__label goods-basic-info">'
-	          str += '<span class="goods-name">'+data[i].itemName+'</span>'
+	          str += '<span class="goods-name" title="'+data[i].itemName+'">'+data[i].itemName+'</span>'
 	          str += '<span class="goods-original-price">&yen;'+absoluteDiv(data[i].itemOriginPrice,100).toFixed(2)+'</span>'
 	          str += '<span class="goods-actual-price">&yen;'+absoluteDiv(data[i].itemPrice,100).toFixed(2)+'</span>'
 	        str += '</p>'
@@ -124,7 +124,7 @@ goods.fillSelectedData = function() {
 	      str += '<div class="weui-cell__bd">'
 	        str += '<div class="weui-cell goods-cell" goods-id="'+goodsInfoSelected[i].itemId+'">'
 	            str += '<div class="weui-cell__bd">'
-	              str += '<p>'+goodsInfoSelected[i].itemName+'</p>'
+	              str += '<p title="'+goodsInfoSelected[i].itemName+'" class="goods-selected-name">'+goodsInfoSelected[i].itemName+'</p>'
 	            str += '</div>'
 	            str += '<div class="weui-cell__ft">'
 	              str += '<span class="goods-price">￥<span class="goods-price-val" data-val="">'+absoluteDiv(goodsInfoSelected[i].itemPrice,100).toFixed(2)+'</span></span>'
@@ -200,7 +200,8 @@ goods.calSelectedTotalAmtNum = function() {
 	var totalAmt = 0;
 	var totalNum = 0;
 	for (var i = 0; i < goodsInfoSelected.length; i++) {
-		totalAmt = absoluteAdd(goodsInfoSelected[i].itemPrice,totalAmt)
+		var tmpamt = absoluteMul(goodsInfoSelected[i].itemPrice,goodsInfoSelected[i].itemNumber)
+		totalAmt = absoluteAdd(tmpamt,totalAmt)
 		totalNum = absoluteAdd(goodsInfoSelected[i].itemNumber,totalNum)
 	}
 	// var $parentEl = $('#goods-wrap .weui-cell_swiped');
