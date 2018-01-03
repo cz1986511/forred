@@ -33,7 +33,7 @@ goods.fillGoodsList = function(data) {
 	var str = "";
 	for (var i = 0; i < data.length; i++) {
 		str += '<a href="javascript:;" class="weui-grid js_grid goods-item" goods-id="'+data[i].itemId+'">'
-	        str += '<i class="weui-icon-circle select-goods-item"></i>'
+	        str += '<i class="weui-icon-circle select-goods-item" goods-id="'+data[i].itemId+'"></i>'
 	        str += '<div class="weui-grid__icon goods-pic">'
 	          str += '<img class="" src="'+data[i].itemDesc+'">'
 	        str += '</div>'
@@ -191,7 +191,16 @@ goods.bindSelectedEvent = function() {
             _this.parents('.weui-cell').remove()
             //检查购物车列表是否为空
             goods.checkGoodsListIsEmpty();
+
             goods.calSelectedTotalAmtNum();
+
+            //遍历选中的商品
+            $('.weui-icon-success').each(function(){
+			    var tmpGoodsId = $(this).attr('goods-id');
+			    if(goodsId == tmpGoodsId) {
+			    	goods.selectGoods($(this))
+			    }
+			});
         }, function() {
           //取消操作
           $('.weui-cell_swiped').swipeout('close')
