@@ -4,7 +4,7 @@
 var sharedLuckyBag = {};
 
 //福袋列表初始化
-sharedLuckyBag.initList = function(self) {
+sharedLuckyBag.initList = function() {
 	var reqData = JSON.stringify({'fdStatus':'02'});
 	$.ajax({
         type: "POST",
@@ -14,9 +14,7 @@ sharedLuckyBag.initList = function(self) {
         dataType: "json",
         success: function(data){
         	var resData = data;
-        	if(self) {
-	          $(self).pullToRefreshDone();
-	        }
+        	$(document.body).pullToRefreshDone();
         	if(resData.status === 0){
         		if(resData.data) {
         			sharedLuckyBag.fillList(resData.data)
@@ -136,10 +134,10 @@ sharedLuckyBag.bindEvent = function() {
 }
 $(function(){
   	sharedLuckyBag.initList()
-  	$(document.body).pullToRefresh(function () {
-		var self = this;
-	    sharedLuckyBag.initList(self)
-	});
+  	
+	$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+        sharedLuckyBag.initList()
+    });
   	
 })
 
