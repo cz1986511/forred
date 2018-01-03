@@ -24,7 +24,9 @@ luckybag.initData = function (self) {
           $(self).pullToRefreshDone();
         }
         if(resData.status === 0){
-          luckybag.fillMyList(resData.data)
+          if(resData.data) {
+            luckybag.fillMyList(resData.data)
+          }
         }else if(resData.status === 2) {
           //未登录
           window.location.href = "http://xiaozhuo.info/login.html"
