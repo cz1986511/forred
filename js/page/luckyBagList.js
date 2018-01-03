@@ -113,11 +113,12 @@ sharedLuckyBag.toLuckyBagDetail = function(fdId) {
 //事件绑定
 sharedLuckyBag.bindEvent = function() {
 	$('.add-lucky-bag').click(function(event) {
+		var _this = $(this);
 		$.confirm({
 		  title: '确定添加？',
 		  text: '您确定将此福袋加入“我的福袋”？',
 		  onOK: function () {
-		    var fdId = $(this).attr('data-fdid')
+		    var fdId = _this.attr('data-fdid')
 			sharedLuckyBag.addMyLuckyBag(fdId);
 		  },
 		  onCancel: function () {
