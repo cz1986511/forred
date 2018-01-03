@@ -207,16 +207,10 @@ goods.calSelectedTotalAmtNum = function() {
 		totalAmt = absoluteAdd(tmpamt,totalAmt)
 		totalNum = absoluteAdd(goodsInfoSelected[i].itemNumber,totalNum)
 	}
-	// var $parentEl = $('#goods-wrap .weui-cell_swiped');
-	// $parentEl.each(function(index,element){
-	//     var amt = parseFloat($(element).find('.goods-price-val').attr('data-val'));
-	//     var num = parseFloat($(element).find('.goods-num').val());
-	//     var goodsTotalPrice = absoluteMul(amt,num)
-	//     totalAmt = absoluteAdd(goodsTotalPrice,totalAmt)
-	//     totalNum = absoluteAdd(num,totalNum)
-	// });
+	var totalAmtText = absoluteDiv(totalAmt,100).toFixed(2);
 	$('.total-amt').attr('data-val',totalAmt);
-	$('.total-amt').text(absoluteDiv(totalAmt,100).toFixed(2))
+	$('.total-amt').text(totalAmtText)
+	$('.payable-amt').text(totalAmtText)
 	$('.total-num').text(totalNum)
 }
 //检查选中商品列表是否为空
