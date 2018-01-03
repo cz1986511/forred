@@ -180,7 +180,7 @@ goods.bindSelectedEvent = function() {
   	})
   	//删除商品
   	$('.remove-goods-item').click(function(e) {
-  		var _this = $($(this)[0]);
+  		var _this = $(e.target);
   		$.confirm("您确定要删除此商品？", " ", function() {
   			var $goodsItem = _this.parents('.goods-cell');
     		var goodsId = $goodsItem.attr('goods-id');
