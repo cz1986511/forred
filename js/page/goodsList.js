@@ -50,7 +50,10 @@ goods.fillGoodsList = function(data) {
 //选择商品
 goods.selectGoods = function(_this) {
 	var _this = _this;
-	var $selectEl = _this.find('.select-goods-item') || _this;
+	var $selectEl = _this.find('.select-goods-item');
+	if(_this.find('.select-goods-item').length === 0) {
+		$selectEl = _this
+	}
 	var stag = $selectEl.hasClass('weui-icon-success');
 	var $parentEl = $selectEl.parent('.goods-item');
 	var goodsId = $parentEl.attr('goods-id');
@@ -195,12 +198,12 @@ goods.bindSelectedEvent = function() {
             goods.calSelectedTotalAmtNum();
 
             //遍历选中的商品
-            $('.weui-icon-success').each(function(){
-			    var tmpGoodsId = $(this).attr('goods-id');
-			    if(goodsId == tmpGoodsId) {
-			    	goods.selectGoods($(this))
-			    }
-			});
+   //          $('.weui-icon-success').each(function(){
+			//     var tmpGoodsId = $(this).attr('goods-id');
+			//     if(goodsId == tmpGoodsId) {
+			//     	goods.selectGoods($(this))
+			//     }
+			// });
         }, function() {
           //取消操作
           $('.weui-cell_swiped').swipeout('close')
