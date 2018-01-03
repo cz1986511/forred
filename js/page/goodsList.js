@@ -16,8 +16,10 @@ goods.getGoodsList = function() {
         success: function(data){
         	var resData = data;
         	if(resData.status === 0){
-        		goods.fillGoodsList(resData.data)
-        		goodsInfoInit = resData.data;
+        		if(resData.data) {
+        			goods.fillGoodsList(resData.data)
+        			goodsInfoInit = resData.data;
+        		}
         	}else if(resData.status === 2) {
         		//未登录
         		window.location.href = "http://xiaozhuo.info/login.html"
@@ -73,14 +75,15 @@ goods.selectGoods = function(_this) {
 goods.calGoodsAmt = function(){
 	var selectedTotalAmt = 0;
 	for (var i = 0; i < goodsInfoSelected.length; i++) {
-		selectedTotalAmt = absoluteAdd(goodsInfoSelected[i].itemPrice,selectedTotalAmt)
+		goodsInfoSelected[i].itemNumber = goodsInfoSelected[i].itemNumber || 1;
+		var tmpTotalAmt = absoluteMul(goodsInfoSelected[i].itemPrice,goodsInfoSelected[i].itemNumber)
+		selectedTotalAmt = absoluteAdd(tmpTotalAmt,selectedTotalAmt)
 	}
 	$('.payable-amt').text(absoluteDiv(selectedTotalAmt,100).toFixed(2))
 }
 //清空已选商品列表
 goods.emptyData = function() {
 	$('#goods-wrap').empty();
-	// $('.to-settle').hide();
 	$('#no-data-list').show()
 }
 //判断是否选择商品
