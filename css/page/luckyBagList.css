@@ -44,6 +44,7 @@
 }
 
 //福袋列表
+
 .lucky-bag-list .weui-panel_access {
   margin-top: 0;
 }
@@ -76,6 +77,6 @@
     color: #fff;
     cursor: pointer;
 }
-.weui-loadmore {
-  display: none;
+.weui-loadmore_line {
+  margin-top: 24.4em;
 }

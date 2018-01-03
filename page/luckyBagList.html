@@ -16,7 +16,13 @@
   </head>
 
   <body ontouchstart>
-    
+    <div class="weui-pull-to-refresh__layer">
+      <div class='weui-pull-to-refresh__arrow'></div>
+      <div class='weui-pull-to-refresh__preloader'></div>
+      <div class="down">下拉刷新</div>
+      <div class="up">释放刷新</div>
+      <div class="refresh">正在刷新</div>
+    </div>
     <header class='lucky-bag-header'>
       <div class="lucky-bag-header-wrap">
         <div class="lucky-bag-header-inner">
@@ -24,16 +30,17 @@
         </div>
       </div>
     </header>
+    
+
+    <div class="weui-loadmore weui-loadmore_line" id="no-data-list">
+      <span class="weui-loadmore__tips">暂无已分享的福袋</span>
+    </div>
     <div class="page__bd lucky-bag-list">
       <div class="weui-panel weui-panel_access">
         <div class="weui-panel__bd" id="lucky-bag-list">
           
         </div>
       </div>
-    </div>
-    <div class="weui-loadmore">
-      <i class="weui-loading"></i>
-      <span class="weui-loadmore__tips">正在加载</span>
     </div>
     <script src="../lib/jquery-2.1.4.js"></script>
     <script src="../lib/fastclick.js"></script>

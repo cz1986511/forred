@@ -4,7 +4,7 @@
 var sharedLuckyBag = {};
 
 //福袋列表初始化
-sharedLuckyBag.initList = function() {
+sharedLuckyBag.initList = function(self) {
 	var reqData = JSON.stringify({'fdStatus':'02'});
 	$.ajax({
         type: "POST",
@@ -14,8 +14,13 @@ sharedLuckyBag.initList = function() {
         dataType: "json",
         success: function(data){
         	var resData = data;
+        	if(self) {
+	          $(self).pullToRefreshDone();
+	        }
         	if(resData.status === 0){
-        		sharedLuckyBag.fillList(resData.data)
+        		if(resData.data) {
+        			sharedLuckyBag.fillList(resData.data)
+        		}
         	}else if(resData.status === 2) {
         		//未登录
         		window.location.href = "http://xiaozhuo.info/login.html"
@@ -29,6 +34,12 @@ sharedLuckyBag.initList = function() {
 sharedLuckyBag.fillList = function(data) {
 	var str = "";
 	var data = data;
+	if(data.length === 0) {
+		sharedLuckyBag.emptyList();
+		return false
+	}else {
+		$('#no-data-list').hide()
+	}
 	for (var i = 0; i < data.length; i++) {
 		str += '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg lucky-bag-item" data-fdid="'+data[i].fdId+'">'
             str += '<div class="weui-media-box__hd">'
@@ -52,7 +63,8 @@ sharedLuckyBag.fillList = function(data) {
 }
 //清空福袋列表
 sharedLuckyBag.emptyList = function() {
-
+	$('#lucky-bag-list').empty();
+	$('#no-data-list').show();
 }
 //添加到我的福袋
 sharedLuckyBag.addMyLuckyBag = function(id) {
@@ -116,24 +128,18 @@ sharedLuckyBag.bindEvent = function() {
 		});
 		event.stopPropagation();
 	})
-	
+
 	$('.lucky-bag-item').click(function(e) {
 		var fdId = $(this).attr('data-fdid')
 		sharedLuckyBag.toLuckyBagDetail(fdId)
 	})
 }
 $(function(){
- 	var loading = false;
-  	$(document.body).infinite().on("infinite", function() {
-	    if(loading) return;
-	    $('.weui-loadmore').show()
-	    loading = true;
-	    setTimeout(function() {
-	      loading = false;
-	      	console.log('loading 2000')
-	      	$('.weui-loadmore').hide()
-	    }, 2000);
-  	});
   	sharedLuckyBag.initList()
+  	$(document.body).pullToRefresh(function () {
+		var self = this;
+	    sharedLuckyBag.initList(self)
+	});
+  	
 })
 

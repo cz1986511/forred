@@ -273,12 +273,8 @@ $(function() {
     }
   })
   $('#tab2').pullToRefresh().on('pull-to-refresh', function (done) {
-    console.log('done')
     var self = this;
     luckybag.initData(self)
-    // setTimeout(function() {
-      
-    // }, 2000)
   })
 	// 购物车
 	$('#shopping-cart').click(function () {
