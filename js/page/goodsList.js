@@ -182,7 +182,7 @@ goods.bindSelectedEvent = function() {
   	$('.remove-goods-item').click(function(e) {
   		var _this = $(e.target);
   		$.confirm("您确定要删除此商品？", " ", function() {
-  			var $goodsItem = _this.parents('.goods-cell');
+  			var $goodsItem = _this.parents('.weui-cell__ft').siblings('.weui-cell__bd').find('.goods-cell');
     		var goodsId = $goodsItem.attr('goods-id');
     		var sIndex = goods.findArrayElem(goodsInfoSelected,goodsId,'itemId');
     		goodsInfoSelected.splice(sIndex,1)
