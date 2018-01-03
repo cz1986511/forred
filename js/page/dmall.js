@@ -10,7 +10,7 @@ luckybag.emptyMyList = function() {
   $('#no-lucky-bag').show()
 }
 //我的福袋---请求初始化数据
-luckybag.initData = function (argument) {
+luckybag.initData = function (self) {
   var reqData = JSON.stringify({"isMy":"02"})
   $.ajax({
       type: "POST",
@@ -20,8 +20,11 @@ luckybag.initData = function (argument) {
       dataType: "json",
       success: function(data){
         var resData = data;
+        if(self) {
+          $(self).pullToRefreshDone();
+        }
         if(resData.status === 0){
-           luckybag.fillMyList(resData.data)
+          luckybag.fillMyList(resData.data)
         }else if(resData.status === 2) {
           //未登录
           window.location.href = "http://xiaozhuo.info/login.html"
@@ -34,7 +37,9 @@ luckybag.initData = function (argument) {
 //我的福袋---填充福袋数据
 luckybag.fillMyList = function(data) {
   var data = data;
-  $('#no-lucky-bag').hide()
+  if(data.length){
+    $('#no-lucky-bag').hide()
+  }
   var str = '';
   for (var i = 0; i < data.length; i++) {
     str += '<div class="weui-cell weui-cell_swiped">'
@@ -267,10 +272,11 @@ $(function() {
   })
   $('#tab2').pullToRefresh().on('pull-to-refresh', function (done) {
     console.log('done')
-    var self = this
-    setTimeout(function() {
-      $(self).pullToRefreshDone();
-    }, 2000)
+    var self = this;
+    luckybag.initData(self)
+    // setTimeout(function() {
+      
+    // }, 2000)
   })
 	// 购物车
 	$('#shopping-cart').click(function () {
