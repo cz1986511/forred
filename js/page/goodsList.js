@@ -283,13 +283,14 @@ goods.addLuckyBagName = function() {
     });
 }
 $(function () {
-	goods.getGoodsList()
+	goods.getGoodsList();
   	//预览福袋
   	$('#to-preview-btn').click(function(e){
   		//判断是否选择商品
   		if(!goods.checkSelected()) return false;
 		goods.emptyData()
 		$("#full-selected-goods").popup();
+
 		goods.fillSelectedData()
 	})
 	//创建福袋
@@ -297,4 +298,6 @@ $(function () {
 		if(goodsInfoSelected.length == 0) return false;
 		goods.addLuckyBagName()
 	})
+	var maxH = $(window).height() - 67;
+	$('.goods-bd').css({'max-height':maxH+'px','overflow-y': 'auto'})
 })
