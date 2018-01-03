@@ -61,7 +61,9 @@ goods.selectGoods = function(_this) {
 		$selectEl.removeClass('weui-icon-success').addClass('weui-icon-circle');
 		//将商品从选中列表中删除
 		var sIndex = goods.findArrayElem(goodsInfoSelected,goodsId,'itemId')
-		goodsInfoSelected.splice(sIndex,1)
+		if(sIndex >= 0) {
+			goodsInfoSelected.splice(sIndex,1)
+		}
 	}else {
 		$selectEl.addClass('weui-icon-success').removeClass('weui-icon-circle')
 		//将商品添加到选中列表中
@@ -198,12 +200,12 @@ goods.bindSelectedEvent = function() {
             goods.calSelectedTotalAmtNum();
 
             //遍历选中的商品
-   //          $('.weui-icon-success').each(function(){
-			//     var tmpGoodsId = $(this).attr('goods-id');
-			//     if(goodsId == tmpGoodsId) {
-			//     	goods.selectGoods($(this))
-			//     }
-			// });
+            $('.weui-icon-success').each(function(){
+			    var tmpGoodsId = $(this).attr('goods-id');
+			    if(goodsId == tmpGoodsId) {
+			    	goods.selectGoods($(this))
+			    }
+			});
         }, function() {
           //取消操作
           $('.weui-cell_swiped').swipeout('close')
