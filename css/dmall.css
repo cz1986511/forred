@@ -117,7 +117,10 @@ footer a {
   // width:20px;
   margin-right:5px;
   display:block;
+  width: 60px;
+  height: 60px;
 }
+
 .lucky-bag-name {
   font-size: 14px;
 }
