@@ -51,14 +51,13 @@ goods.fillGoodsList = function(data) {
     img.src = data[j].itemDesc;
     img.onload = function(e){
       var img = e.target;
-      console.log('b',img.width,img.height)
       if(img.width != img.height) {
         if(img.width < img.height) {
           let tmpWidth = Math.round((img.width/img.height)*60)
-          $('.goods_item').css({'width':tmpWidth,'height':'60'})
+          $(img).css({'width':tmpWidth,'height':'60'})
         }else {
           let tmpHeight = Math.round((img.height/img.width)*60)
-          $('.goods_item').css({'width':'60','height':tmpHeight})
+          $(img).css({'width':'60','height':tmpHeight})
         }            
       }
     };
