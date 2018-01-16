@@ -49,16 +49,16 @@ luckyBagDetail.fillData = function(data) {
   for (var i = 0; i < itemList.length; i++) {
     var img = new Image();
     img.src = itemList[i].fdItemPic;
-    img.fdId = itemList[i].fdId;
+    img.fdItemId = itemList[i].fdItemId;
     img.onload = function(e){
       var img = e.target;
       if(img.width != img.height) {
         if(img.width < img.height) {
           let tmpWidth = Math.round((img.width/img.height)*60)
-          $('#goods_item_pic'+img.fdId).css({'width':tmpWidth,'height':'60'})
+          $('#goods_item_pic'+img.fdItemId).css({'width':tmpWidth,'height':'60'})
         }else {
           let tmpHeight = Math.round((img.height/img.width)*60)
-          $('#goods_item_pic'+img.fdId).css({'width':'60','height':tmpHeight})
+          $('#goods_item_pic'+img.fdItemId).css({'width':'60','height':tmpHeight})
         }            
       }
     };
