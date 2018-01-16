@@ -33,7 +33,7 @@ luckyBagDetail.fillData = function(data) {
 	for (var i = 0; i < itemList.length; i++) {
 		str += '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">'
             str += '<div class="weui-media-box__hd">'
-              str += '<img class="weui-media-box__thumb" src="'+itemList[i].fdItemPic+'" alt="">'
+              str += '<img class="weui-media-box__thumb goods_item" src="'+itemList[i].fdItemPic+'" alt="">'
             str += '</div>'
             str += '<div class="weui-media-box__bd">'
               str += '<h4 class="weui-media-box__title item-name">'+itemList[i].fdItemName+'</h4>'
@@ -46,6 +46,22 @@ luckyBagDetail.fillData = function(data) {
           str += '</a>'
 	}
 	$('#item-list').html(str)
+  // var img = new Image();
+  // $(".goods_item").attr('src') = this.resData.dealerCouponDto.dealerCouponImgUrl;
+  $(".goods_item").onload = function(){
+    var _this = this;
+    var img = _this;
+    console.log(img)
+    if(img.width != img.height) {
+      if(img.width < img.height) {
+        let tmpWidth = Math.round((img.width/img.height)*60)
+        $('.image-card').find('img').css({'width':tmpWidth,'height':'60'})
+      }else {
+        let tmpHeight = Math.round((img.height/img.width)*60)
+        $('.image-card').find('img').css({'width':'60','height':tmpHeight})
+      }            
+    }
+  };
 }
 luckyBagDetail.calAmt = function(data) {
 	var tmpOPrice = 0;
