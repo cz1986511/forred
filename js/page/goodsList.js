@@ -46,9 +46,9 @@ goods.fillGoodsList = function(data) {
 	}
 	$('#goods-list-wrap').html(str);
 
-  for (var i = 0; i < itemList.length; i++) {
+  for (var i = 0; i < data.length; i++) {
     var img = new Image();
-    img.src = itemList[i].fdItemPic;
+    img.src = data[i].itemDesc;
     img.onload = function(){
       if(img.width != img.height) {
         if(img.width < img.height) {
