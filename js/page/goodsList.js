@@ -49,8 +49,8 @@ goods.fillGoodsList = function(data) {
   for (var j = 0; j < data.length; j++) {
     var img = new Image();
     img.src = data[j].itemDesc;
-    img.onload = function(img){
-      var img = img;
+    img.onload = function(e){
+      var img = e.target;
       console.log('b',img.width,img.height)
       if(img.width != img.height) {
         if(img.width < img.height) {
