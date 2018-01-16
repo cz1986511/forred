@@ -61,7 +61,6 @@ luckyBagDetail.fillData = function(data) {
       }
     };
   };
-  
 }
 luckyBagDetail.calAmt = function(data) {
 	var tmpOPrice = 0;
