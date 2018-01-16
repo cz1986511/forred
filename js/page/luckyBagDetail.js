@@ -47,18 +47,21 @@ luckyBagDetail.fillData = function(data) {
 	}
 	$('#item-list').html(str)
   var img = new Image();
-  img.src = itemList[i].fdItemPic;
-  img.onload = function(){
-    if(img.width != img.height) {
-      if(img.width < img.height) {
-        let tmpWidth = Math.round((img.width/img.height)*60)
-        $('.goods_item').find('img').css({'width':tmpWidth,'height':'60'})
-      }else {
-        let tmpHeight = Math.round((img.height/img.width)*60)
-        $('.goods_item').find('img').css({'width':'60','height':tmpHeight})
-      }            
-    }
+  for (var i = 0; i < itemList.length; i++) {
+    img.src = itemList[i].fdItemPic;
+    img.onload = function(){
+      if(img.width != img.height) {
+        if(img.width < img.height) {
+          let tmpWidth = Math.round((img.width/img.height)*60)
+          $('.goods_item').find('img').css({'width':tmpWidth,'height':'60'})
+        }else {
+          let tmpHeight = Math.round((img.height/img.width)*60)
+          $('.goods_item').find('img').css({'width':'60','height':tmpHeight})
+        }            
+      }
+    };
   };
+  
 }
 luckyBagDetail.calAmt = function(data) {
 	var tmpOPrice = 0;
