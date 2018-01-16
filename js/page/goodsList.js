@@ -45,7 +45,6 @@ goods.fillGoodsList = function(data) {
 	    str += '</a>';
 	}
 	$('#goods-list-wrap').html(str)
-	goods.bindEvent()
   var img = new Image();
   for (var i = 0; i < data.length; i++) {
     img.src = data[i].itemDesc;
@@ -61,6 +60,8 @@ goods.fillGoodsList = function(data) {
       }
     };
   };
+	goods.bindEvent()
+  
 }
 //选择商品
 goods.selectGoods = function(_this) {
