@@ -44,10 +44,11 @@ goods.fillGoodsList = function(data) {
 	        str += '</p>'
 	    str += '</a>';
 	}
-	$('#goods-list-wrap').html(str)
-  var img = new Image();
-  for (var i = 0; i < data.length; i++) {
-    img.src = data[i].itemDesc;
+	$('#goods-list-wrap').html(str);
+
+  for (var i = 0; i < itemList.length; i++) {
+    var img = new Image();
+    img.src = itemList[i].fdItemPic;
     img.onload = function(){
       if(img.width != img.height) {
         if(img.width < img.height) {
