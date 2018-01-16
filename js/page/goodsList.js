@@ -46,13 +46,12 @@ goods.fillGoodsList = function(data) {
 	}
 	$('#goods-list-wrap').html(str);
 
-  for (var i = 0; i < data.length; i++) {
+  for (var j = 0; j < data.length; j++) {
     var img = new Image();
-    img.src = data[i].itemDesc;
-    console.log('a',img.width,img.height)
-    img.onload = function(){
-          console.log('b',img.width,img.height)
-
+    img.src = data[j].itemDesc;
+    img.onload = function(img){
+      var img = img;
+      console.log('b',img.width,img.height)
       if(img.width != img.height) {
         if(img.width < img.height) {
           let tmpWidth = Math.round((img.width/img.height)*60)
