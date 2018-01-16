@@ -49,7 +49,10 @@ goods.fillGoodsList = function(data) {
   for (var i = 0; i < data.length; i++) {
     var img = new Image();
     img.src = data[i].itemDesc;
+    console.log('a',img.width,img.height)
     img.onload = function(){
+          console.log('b',img.width,img.height)
+
       if(img.width != img.height) {
         if(img.width < img.height) {
           let tmpWidth = Math.round((img.width/img.height)*60)
