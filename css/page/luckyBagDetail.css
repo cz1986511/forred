@@ -92,6 +92,9 @@
   color: #ce4646;
   margin-right: 12px;
 }
+.goods_item_pic {
+  margin: 0 auto;
+}
 
 //分享福袋
 #share-it-pop {
