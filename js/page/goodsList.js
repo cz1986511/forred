@@ -47,19 +47,19 @@ goods.fillGoodsList = function(data) {
 	$('#goods-list-wrap').html(str);
 
   for (var j = 0; j < data.length; j++) {
-    // var img = new Image();
-    // img.src = data[j].itemDesc;
-    var str = '#goods_item_pic'+data[j].itemId
-    var imgDOM = $(str)[0]
-    imgDOM.onload = function(e){
+    var img = new Image();
+    img.src = data[j].itemDesc;
+    img.itemId = data[i].itemId;
+    img.onload = function(e){
       var img = e.target;
+      console.log(img.itemId)
       if(img.width != img.height) {
         if(img.width < img.height) {
           let tmpWidth = Math.round((img.width/img.height)*60)
-          $(img).css({'width':tmpWidth,'height':'60'})
+          $('#goods_item_pic'+img.itemId).css({'width':tmpWidth,'height':'60'})
         }else {
           let tmpHeight = Math.round((img.height/img.width)*60)
-          $(img).css({'width':'60','height':tmpHeight})
+          $('#goods_item_pic'+img.itemId).css({'width':'60','height':tmpHeight})
         }            
       }
     };
