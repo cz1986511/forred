@@ -46,19 +46,16 @@ luckyBagDetail.fillData = function(data) {
           str += '</a>'
 	}
 	$('#item-list').html(str)
-  // var img = new Image();
-  // $(".goods_item").attr('src') = this.resData.dealerCouponDto.dealerCouponImgUrl;
-  $(".goods_item").onload = function(){
-    var _this = this;
-    var img = _this;
-    console.log(img)
+  var img = new Image();
+  img.src = itemList[i].fdItemPic;
+  img.onload = function(){
     if(img.width != img.height) {
       if(img.width < img.height) {
         let tmpWidth = Math.round((img.width/img.height)*60)
-        $('.image-card').find('img').css({'width':tmpWidth,'height':'60'})
+        $('.goods_item').find('img').css({'width':tmpWidth,'height':'60'})
       }else {
         let tmpHeight = Math.round((img.height/img.width)*60)
-        $('.image-card').find('img').css({'width':'60','height':tmpHeight})
+        $('.goods_item').find('img').css({'width':'60','height':tmpHeight})
       }            
     }
   };
