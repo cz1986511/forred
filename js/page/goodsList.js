@@ -49,7 +49,7 @@ goods.fillGoodsList = function(data) {
   for (var j = 0; j < data.length; j++) {
     var img = new Image();
     img.src = data[j].itemDesc;
-    img.itemId = data[i].itemId;
+    img.itemId = data[j].itemId;
     img.onload = function(e){
       var img = e.target;
       console.log(img.itemId)
