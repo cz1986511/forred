@@ -83,6 +83,7 @@
 }
 .lb-original-price {
 	text-decoration: line-through;
+  color: #999;
 }
 .lb-actual-price {
 	font-style: normal;

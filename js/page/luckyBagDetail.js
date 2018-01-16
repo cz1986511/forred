@@ -53,10 +53,10 @@ luckyBagDetail.fillData = function(data) {
       if(img.width != img.height) {
         if(img.width < img.height) {
           let tmpWidth = Math.round((img.width/img.height)*60)
-          $('.goods_item').find('img').css({'width':tmpWidth,'height':'60'})
+          $('.goods_item').css({'width':tmpWidth,'height':'60'})
         }else {
           let tmpHeight = Math.round((img.height/img.width)*60)
-          $('.goods_item').find('img').css({'width':'60','height':tmpHeight})
+          $('.goods_item').css({'width':'60','height':tmpHeight})
         }            
       }
     };
