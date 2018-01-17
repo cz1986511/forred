@@ -41,7 +41,7 @@ sharedLuckyBag.fillList = function(data) {
 	for (var i = 0; i < data.length; i++) {
 		str += '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg lucky-bag-item" data-fdid="'+data[i].fdId+'">'
             str += '<div class="weui-media-box__hd">'
-              str += '<img class="weui-media-box__thumb" src="" alt="">'
+              str += '<img class="weui-media-box__thumb" src="../../image/yfd1.png" alt="">'
             str += '</div>'
             str += '<div class="weui-media-box__bd">'
               str += '<h4 class="weui-media-box__title fd-name">'+data[i].fdName+'</h4>'

@@ -48,6 +48,10 @@
 .lucky-bag-list .weui-panel_access {
   margin-top: 0;
 }
+.lucky-bag-item img {
+  width: 60px;
+  height: 60px;
+}
 .lucky-bag-list .weui-panel:first-child {
     margin-top: 18px;
 }

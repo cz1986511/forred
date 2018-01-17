@@ -35,7 +35,7 @@ goods.fillGoodsList = function(data) {
 		str += '<a href="javascript:;" class="weui-grid js_grid goods-item" goods-id="'+data[i].itemId+'">'
 	        str += '<i class="weui-icon-circle select-goods-item" goods-id="'+data[i].itemId+'"></i>'
 	        str += '<div class="weui-grid__icon goods-pic">'
-	          str += '<img class="" src="'+data[i].itemDesc+'">'
+	          str += '<img class="goods_item_pic" id="goods_item_pic'+data[i].itemId+'" src="'+data[i].itemDesc+'">'
 	        str += '</div>'
 	        str += '<p class="weui-grid__label goods-basic-info">'
 	          str += '<span class="goods-name" title="'+data[i].itemName+'">'+data[i].itemName+'</span>'
@@ -44,8 +44,27 @@ goods.fillGoodsList = function(data) {
 	        str += '</p>'
 	    str += '</a>';
 	}
-	$('#goods-list-wrap').html(str)
+	$('#goods-list-wrap').html(str);
+
+  for (var j = 0; j < data.length; j++) {
+    var img = new Image();
+    img.src = data[j].itemDesc;
+    img.itemId = data[j].itemId;
+    img.onload = function(e){
+      var img = e.target;
+      if(img.width != img.height) {
+        if(img.width < img.height) {
+          let tmpWidth = Math.round((img.width/img.height)*60)
+          $('#goods_item_pic'+img.itemId).css({'width':tmpWidth,'height':'60'})
+        }else {
+          let tmpHeight = Math.round((img.height/img.width)*60)
+          $('#goods_item_pic'+img.itemId).css({'width':'60','height':tmpHeight})
+        }            
+      }
+    };
+  };
 	goods.bindEvent()
+  
 }
 //选择商品
 goods.selectGoods = function(_this) {

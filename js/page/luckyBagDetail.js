@@ -13,7 +13,6 @@ luckyBagDetail.getData = function() {
         success: function(data){
         	var resData = data;
         	if(resData.status === 0){
-        		console.log(resData)
         		luckyBagDetail.fillData(resData.data)
         		luckyBagDetail.calAmt(resData.data.fudaiItemInfos)
         	}else if(resData.status === 2) {
@@ -33,7 +32,7 @@ luckyBagDetail.fillData = function(data) {
 	for (var i = 0; i < itemList.length; i++) {
 		str += '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">'
             str += '<div class="weui-media-box__hd">'
-              str += '<img class="weui-media-box__thumb" src="'+itemList[i].fdItemPic+'" alt="">'
+              str += '<img class="weui-media-box__thumb goods_item_pic" id="goods_item_pic'+itemList[i].fdItemId+'" src="'+itemList[i].fdItemPic+'" alt="">'
             str += '</div>'
             str += '<div class="weui-media-box__bd">'
               str += '<h4 class="weui-media-box__title item-name">'+itemList[i].fdItemName+'</h4>'
@@ -46,6 +45,24 @@ luckyBagDetail.fillData = function(data) {
           str += '</a>'
 	}
 	$('#item-list').html(str)
+  
+  for (var i = 0; i < itemList.length; i++) {
+    var img = new Image();
+    img.src = itemList[i].fdItemPic;
+    img.fdItemId = itemList[i].fdItemId;
+    img.onload = function(e){
+      var img = e.target;
+      if(img.width != img.height) {
+        if(img.width < img.height) {
+          let tmpWidth = Math.round((img.width/img.height)*60)
+          $('#goods_item_pic'+img.fdItemId).css({'width':tmpWidth,'height':'60'})
+        }else {
+          let tmpHeight = Math.round((img.height/img.width)*60)
+          $('#goods_item_pic'+img.fdItemId).css({'width':'60','height':tmpHeight})
+        }            
+      }
+    };
+  };
 }
 luckyBagDetail.calAmt = function(data) {
 	var tmpOPrice = 0;

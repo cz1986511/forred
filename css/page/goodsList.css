@@ -46,6 +46,9 @@ background-color: #f7f7f8;
 	color: #ce4646;
 	font-weight: bold;
 }
+.goods_item_pic {
+    margin: 0 auto;
+}
 
 //底部
 .weui-footer_fixed-bottom .total-info {
