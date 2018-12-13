@@ -74,7 +74,7 @@
                                             </a>
                                         </li>
                                         <li class="title" role="presentation">
-                                            <a href="http://xiaozhuo.info/dmall.html" target="_blank">
+                                            <a href="http://xiaozhuo.info" target="_blank">
                                                 友福袋
                                             </a>
                                         </li>
@@ -225,7 +225,7 @@
               $.ajax({
                 type: 'post',
                 dataType: 'json',
-                url: 'http://xiaozhuo.info/AIinfo/user_address_list',
+                url: 'http://xiaozhuo.info/api/user_address_list',
                 data: reqData,
                 success: function(data) {
                   if (!data.status) {//验证成功,显示通讯录
@@ -270,7 +270,7 @@
           $.ajax({
               type: 'post',
               dataType: 'json',
-              url: 'http://xiaozhuo.info/AIinfo/oilinfo',
+              url: 'http://xiaozhuo.info/api/oilinfo',
               data: reqData,
               success: function(data) {
                 if (data.data) {
@@ -291,7 +291,7 @@
           $.ajax({
               type: 'post',
               dataType: 'json',
-              url: 'http://xiaozhuo.info/AIinfo/weather',
+              url: 'http://xiaozhuo.info/api/weather',
               data: reqData,
               success: function(data) {
                 if (data.data) {
@@ -309,7 +309,7 @@
           $.ajax({
               type: 'post',
               dataType: 'json',
-              url: 'http://xiaozhuo.info/AIinfo/weather',
+              url: 'http://xiaozhuo.info/api/weather',
               data: reqData,
               success: function(data) {
                 if (data.data) {
@@ -326,7 +326,7 @@
           $.ajax({
               type: 'post',
               dataType: 'json',
-              url: 'http://xiaozhuo.info/AIinfo/art_list',
+              url: 'http://xiaozhuo.info/api/art/list',
               data: reqData,
               success: function(data) {
                 if (data.data) {
