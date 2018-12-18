@@ -39,23 +39,6 @@
 								                <div class="oilInfo" id="oilInfo">
                                     油价
                                 </div>
-                                <div class="a-link" id="a-link" style="display:none">
-                                    <ul class="nav nav-pills tabsInfor">
-                                        <li class="title" role="presentation">
-                                            <video controls="" height="30" poster="image/zgzs.png" src="http://trslbs.kaolafm.com/016f63815d64d4db/1600000000510/playlist.m3u8" width="100">
-                                            </video>
-                                        </li>
-                                        <li class="title" role="presentation">
-                                            <video height="30" poster="image/jjzs.png" src="http://trslbs.kaolafm.com/016f63815d64d4db/1600000000514/playlist.m3u8" width="100">
-                                            </video>
-                                        </li>
-                                        <li class="title" role="presentation">
-                                            <a class="aLinkDisplay">
-                                                隐藏
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                                 <div class="row tabs">
                                     <ul class="nav nav-pills tabsInfor">
                                         <li class="active title" role="presentation">
@@ -66,26 +49,6 @@
                                         <li class="title" role="presentation">
                                             <a href="/map.html">
                                                 地图
-                                            </a>
-                                        </li>
-                                        <li class="title" role="presentation">
-                                            <a class="aLink">
-                                                常用
-                                            </a>
-                                        </li>
-                                        <li class="title" role="presentation">
-                                            <a href="http://xiaozhuo.info" target="_blank">
-                                                友福袋
-                                            </a>
-                                        </li>
-                                        <li class="title" role="presentation">
-                                            <a href="/AIinfo/addfood.html" target="_blank">
-                                                日历
-                                            </a>
-                                        </li>
-                                        <li class="title" role="presentation">
-                                            <a class="contacts">
-                                                通讯录
                                             </a>
                                         </li>
                                     </ul>
@@ -101,28 +64,6 @@
                                 <div class="content-infors ">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dataInfor " id="dataInfor">
                                     </div>
-                                </div>
-                                <div class="content-contacts ">
-                                        <table class="table table-hover">
-                                            <caption>
-                                                通讯录
-                                            </caption>
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        姓名
-                                                    </th>
-                                                    <th>
-                                                        电话号码
-                                                    </th>
-                                                    <th>
-                                                        职位
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="contactsData">
-                                            </tbody>
-                                        </table>
                                 </div>
                                 <div class="content-up">
                                     <button class="btn btn-default" type="button">
@@ -194,11 +135,6 @@
           $(this).addClass("active")
         })
         
-        //点击通讯录
-        $(".contacts").click(function(){       
-          getContacts()//通讯录
-        })
-   
         $(".weather").click(function(){       
           getWeather1({})//天气
         })
@@ -211,59 +147,6 @@
           })
         })
 
-        //获取通讯录
-        function getContacts(){
-          var reqData = {}
-          var getContactsHtml = "";
-          layer.open({
-            content: '<p>请输入验证信息：</p><input type="text" id="inputVulue">'
-            ,btn: ['确定', '取消']
-            ,yes: function(index, layero){
-              reqData = {
-                token:$("#inputVulue").val()//不知道设呢key，暂时写value
-              }
-              $.ajax({
-                type: 'post',
-                dataType: 'json',
-                url: 'http://xiaozhuo.info/api/user_address_list',
-                data: reqData,
-                success: function(data) {
-                  if (!data.status) {//验证成功,显示通讯录
-                    var resData = data.data
-                    for (var i = 0; i < resData.length; i++) {
-                     getContactsHtml +='<tr>'+
-                                      '<td>'+resData[i].userName+'</td>'+
-                                      '<td><a href="tel:'+resData[i].telPhone+'">'+resData[i].telPhone+'</a></td>'+
-                    '<td>'+resData[i].post+'</td>'+
-                                    '</tr>'
-                    };
-                    $("#contactsData").html(getContactsHtml)
-                    $(".content-contacts").css("display","block")
-                    $(".content-infors").css("display","none")
-                    $(".content").scrollTop(10) 
-                    if( $(".content").scrollTop() <= 0 ){//没有滚动条时隐藏返回顶端按钮
-                      $(".content-up").css("display","none")
-                    }
-                    $(".content").scrollTop(0) 
-                  }else{//验证失败,弹出提示
-                    layer.alert(data.msg)
-                  };                               
-                },
-                error: function() {
-                   layer.alert("出错啦！！")
-                }
-              }); 
-              layer.close(index);
-            }
-            ,btn2: function(index, layero){
-              layer.close(index);
-            }
-            ,cancel: function(){ 
-              layer.close(index);
-            }
-          });
-        }
-		
 		//获取油价数据
         function getOilInfo(reqData){
           var oilinfoHtml = "";
