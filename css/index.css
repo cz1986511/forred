@@ -1,0 +1,100 @@
+    img{
+        width: 80%;
+      }
+      .dataInfor{
+        max-height: 100rem
+      }
+      .infor{
+        margin-top: 1em
+      }
+      .container-fluid{
+        margin-top: 1rem
+      }
+      .author{
+        margin-right: 1rem
+      }
+      .nav{
+        margin-top: 1rem
+      }
+      .content{
+        overflow-y: auto;
+      }
+      .infor-introduction{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+      .infor-title{
+        margin-top: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .tabs{
+        border-bottom: 1px solid #DBDBDB;
+        text-align: center;
+        margin:0 auto;
+      }
+      .blue{
+        color: #337ab7
+      }
+      .content-up{
+        position:absolute;
+        bottom:2rem;
+        right:2rem;
+      }
+      /* 大屏幕 */
+      @media (min-width: 1200px) {}
+ 
+      /* 平板电脑和小屏电脑之间的分辨率 */
+      @media (min-width: 768px) and (max-width: 979px) {}
+ 
+      /* 横向放置的手机和竖向放置的平板之间的分辨率 */
+      @media (max-width: 767px) {
+        img{
+          width: 100%;
+        }
+        h3{
+          font-size: 1.2rem;
+          font-weight: bolder;
+          margin:1rem 0;
+        }
+        span,p{
+          font-size: 1rem
+        }
+        .nav li{
+          width: 10rem;
+          text-align: center;
+        }
+        .nav li a{
+          font-size: 1.2rem;
+          padding: 0.5rem 0.8rem
+        }
+      }
+      
+      /* 横向放置的手机及分辨率更小的设备 */
+      @media (max-width: 480px) {
+        img{
+          width: 100%;
+        }
+        h3{
+          font-size: 1.5rem;
+          font-weight: bolder;
+          margin:1rem 0;
+        }
+        span,p{
+          font-size: 1rem
+        }
+        .nav li{
+          width: 10rem;
+          text-align: center;
+        }
+        .nav li a{
+          font-size: 1.5rem;
+          padding: 0.5rem 0.8rem
+        }
+      }
