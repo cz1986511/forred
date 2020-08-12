@@ -33,7 +33,8 @@
           }]
         });
         dayChart.showLoading();
-        fetchData(function (data) {
+        $(function(){
+          fetchData(function (data) {
           dayChart.hideLoading();
           dayChart.setOption({
             xAxis: {
@@ -45,7 +46,8 @@
               data: data.data.dayData
             }]
           });
-        });
+          });
+        })
 
         function fetchData(reqData) {
           $.ajax({
