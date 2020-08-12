@@ -13,28 +13,28 @@
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var dayChart = echarts.init(document.getElementById('day'));
-
         // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: '日消费'
-            },
-            tooltip: {},
-            legend: {
-                data:['日消费']
-            },
-            xAxis: {
-                data: []
-            },
-            yAxis: {},
-            series: [{
-                name: '日消费',
-                type: 'bar',
-                data: []
-            }]
-        };
+        dayChart.setOption({
+          title: {
+            text: '异步数据加载示例'
+          },
+          tooltip: {},
+          legend: {
+            data:['销量']
+          },
+          xAxis: {
+            data: []
+          },
+          yAxis: {},
+          series: [{
+            name: '销量',
+            type: 'bar',
+            data: []
+          }]
+        });
+        dayChart.showLoading();
+
         function fetchData(reqData) {
-        // 通过 setTimeout 模拟异步加载
           $.ajax({
               type: 'post',
               dataType: 'json',
@@ -49,7 +49,9 @@
               }
           }); 
         }
-        dayChart.showLoading();
+
+        
+
         fetchData(function (data) {
           dayChart.hideLoading();
           dayChart.setOption({
@@ -58,10 +60,10 @@
             },
             series: [{
             // 根据名字对应到相应的系列
-            name: '日消费',
-            data: data.data.dataData
-          }]
-        });
+              name: '日消费',
+              data: data.data.dataData
+            }]
+          });
         });
 
     </script>
