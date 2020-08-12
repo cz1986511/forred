@@ -33,6 +33,19 @@
           }]
         });
         dayChart.showLoading();
+        fetchData(function (data) {
+          dayChart.hideLoading();
+          dayChart.setOption({
+            xAxis: {
+              data: data.data.dayNum
+            },
+            series: [{
+            // 根据名字对应到相应的系列
+              name: '日消费',
+              data: data.data.dayData
+            }]
+          });
+        });
 
         function fetchData(reqData) {
           $.ajax({
@@ -49,22 +62,6 @@
               }
           }); 
         }
-
-        
-
-        fetchData(function (data) {
-          dayChart.hideLoading();
-          dayChart.setOption({
-            xAxis: {
-              data: data.data.dayNum
-            },
-            series: [{
-            // 根据名字对应到相应的系列
-              name: '日消费',
-              data: data.data.dayData
-            }]
-          });
-        });
 
     </script>
     </body>
