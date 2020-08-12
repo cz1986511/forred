@@ -35,17 +35,17 @@
         dayChart.showLoading();
         $(function(){
           fetchData(function (data) {
-          dayChart.hideLoading();
-          dayChart.setOption({
-            xAxis: {
-              data: data.data.dayNum
-            },
-            series: [{
-            // 根据名字对应到相应的系列
-              name: '日消费',
-              data: data.data.dayData
-            }]
-          });
+            console.log(data.data.dayData);
+            dayChart.hideLoading();
+            dayChart.setOption({
+              xAxis: {
+                data: data.data.dayNum
+              },
+              series: [{
+                name: '日消费',
+                data: data.data.dayData
+              }]
+            });
           });
         })
 
