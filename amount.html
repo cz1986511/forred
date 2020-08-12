@@ -20,14 +20,14 @@
           },
           tooltip: {},
           legend: {
-            data:['销量']
+            data:['日消费']
           },
           xAxis: {
             data: []
           },
           yAxis: {},
           series: [{
-            name: '销量',
+            name: '日消费',
             type: 'bar',
             data: []
           }]
@@ -61,7 +61,7 @@
             series: [{
             // 根据名字对应到相应的系列
               name: '日消费',
-              data: data.data.dataData
+              data: data.data.dayData
             }]
           });
         });
