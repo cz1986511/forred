@@ -9,14 +9,16 @@
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     </head>
     <body>
-    <div id="day" style="width: 600px;height:400px;"></div>
+    <div id="day" style="width: 400px;height:200px;"></div>
+    <div id="month" style="width: 400px;height:200px;"></div>
+    <div id="year" style="width: 400px;height:200px;"></div>
     <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
         var dayChart = echarts.init(document.getElementById('day'));
-        // 指定图表的配置项和数据
+        var monthChart = echarts.init(document.getElementById('month'));
+        var yearChart = echarts.init(document.getElementById('year'));
         dayChart.setOption({
           title: {
-            text: '异步数据加载示例'
+            text: '日消费数据展示'
           },
           tooltip: {},
           legend: {
@@ -28,11 +30,58 @@
           yAxis: {},
           series: [{
             name: '日消费',
+            type: 'line',
+            label:{
+              show:true
+            },
+            data: []
+          }]
+        });
+        monthChart.setOption({
+          title: {
+            text: '月消费数据展示'
+          },
+          tooltip: {},
+          legend: {
+            data:['月消费']
+          },
+          xAxis: {
+            data: []
+          },
+          yAxis: {},
+          series: [{
+            name: '月消费',
+            type: 'line',
+            label:{
+              show:true
+            },
+            data: []
+          }]
+        });
+        yearChart.setOption({
+          title: {
+            text: '年消费数据展示'
+          },
+          tooltip: {},
+          legend: {
+            data:['年消费']
+          },
+          xAxis: {
+            data: []
+          },
+          yAxis: {},
+          series: [{
+            name: '年消费',
             type: 'bar',
+            label:{
+              show:true
+            },
             data: []
           }]
         });
         dayChart.showLoading();
+        monthChart.showLoading();
+        yearChart.showLoading();
         $(function(){
           fetchData(function (data) {
             console.log(data.data.dayData);
@@ -57,7 +106,36 @@
               data: reqData,
               success: function(data) {
                 if (data.data) {
-                  console.log(data.data.dayNum);
+                  dayChart.hideLoading();
+                  dayChart.setOption({
+                    xAxis: {
+                      data: data.data.dayNum
+                    },
+                    series: [{
+                      name: '日消费',
+                      data: data.data.dayData
+                    }]
+                  });
+                  monthChart.hideLoading();
+                  monthChart.setOption({
+                    xAxis: {
+                      data: data.data.monthNum
+                    },
+                    series: [{
+                      name: '月消费',
+                      data: data.data.monthData
+                    }]
+                  });
+                  yearChart.hideLoading();
+                  yearChart.setOption({
+                    xAxis: {
+                      data: data.data.yearNum
+                    },
+                    series: [{
+                      name: '年消费',
+                      data: data.data.yearData
+                    }]
+                  });
                 };                              
               },
               error: function() {
