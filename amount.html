@@ -185,12 +185,14 @@
             url: 'http://xiaozhuo.info/api/consume/save?token=123456',
             type: 'post',
             contentType: "application/json",
-            data: {"year": year, "month": month, "day": day, "name": name, "amount": amount, "type": 1},
+            data: JSON.stringify({"year": year, "month": month, "day": day, "name": name, "amount": amount, "type": 1}),
             dataType: 'json',
             success: function (data) {
                 if (data.msg == "执行成功") {    
                     alert("成功");
+                    location.reload(true);
                 } else {
+                    alert("失败");
                 }
             },
           });
