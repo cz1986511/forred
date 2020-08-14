@@ -14,9 +14,9 @@
     <div id="year" style="width: 400px;height:200px;"></div>
     <div>
       <div>
-        年: <input type="search" id="year" name="year" placeholder="年" />
-          月: <input type="search" id="month" name="month" placeholder="月" />
-          日: <input type="search" id="day" name="day" placeholder="日期" />
+        年: <input type="search" id="years" name="years" placeholder="年" />
+          月: <input type="search" id="months" name="months" placeholder="月" />
+          日: <input type="search" id="days" name="days" placeholder="日期" />
       </div>
       <div>
         名称: <input type="search" id="name" name="name" placeholder="你又花钱了哟" />
@@ -159,9 +159,9 @@
           }); 
         }
         function saveSubmit() {
-          var year = $("#year").val();
-          var month = $("#month").val();
-          var day = $("#day").val();
+          var year = $("#years").val();
+          var month = $("#months").val();
+          var day = $("#days").val();
           var name = $("#name").val();
           var amount = $("#amount").val();
           // 判断
@@ -184,6 +184,7 @@
           $.ajax({
             url: 'http://xiaozhuo.info/api/consume/save?token=123456',
             type: 'post',
+            contentType: "application/json",
             data: {"year": year, "month": month, "day": day, "name": name, "amount": amount, "type": 1},
             dataType: 'json',
             success: function (data) {
