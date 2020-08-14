@@ -166,24 +166,19 @@
           var amount = $("#amount").val();
           // 判断
           if (year.length == 0) {
-            $("#year").tips({msg: "请选择年"});
-            return;
+            alert("请选择年");
           }
           if (month.length == 0) {
-            $("#month").tips({msg: "请选择月"});
-            return;
+            alert("请选择月");
           }
           if (day.length == 0) {
-            $("#day").tips({msg: "请选择日期"});
-            return;
+            alert("请选择日期");
           }
           if (name.length == 0) {
-            $("#name").tips({msg: "请输入消费名称"});
-            return;
+            alert("请输入消费名称");
           }
           if (amount.length == 0) {
-            $("#amount").tips({msg: "请输入消费金额"});
-            return;
+            alert("请输入消费金额");
           }
         // Ajax提交数据
           $.ajax({
