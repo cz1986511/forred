@@ -14,9 +14,9 @@
     <div id="year" style="width: 400px;height:200px;"></div>
     <div>
       <div>
-        年: <input type="number" id="year" name="year" min="2020" max="2099" />
-          月: <input type="number" id="month" name="month" min="1" max="12" />
-          日: <input type="number" id="day" name="day" min="1" max="31" />
+        年: <input type="search" id="year" name="year" placeholder="年" />
+          月: <input type="search" id="month" name="month" placeholder="月" />
+          日: <input type="search" id="day" name="day" placeholder="日期" />
       </div>
       <div>
         名称: <input type="search" id="name" name="name" placeholder="你又花钱了哟" />
@@ -182,12 +182,12 @@
           }
         // Ajax提交数据
           $.ajax({
-            url: "http://xiaozhuo.info/api/consume/save?token=123456",
-            type: "post",
+            url: 'http://xiaozhuo.info/api/consume/save?token=123456',
+            type: 'post',
             data: {"year": year, "month": month, "day": day, "name": name, "amount": amount, "type": 1},
-            dataType: "json",
+            dataType: 'json',
             success: function (data) {
-                if (data.message == "success") {    
+                if (data.msg == "执行成功") {    
                     alert("成功");
                 } else {
                 }
