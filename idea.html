@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1.0,user-scalable=no" name="viewport">
+        <title>xiaozhuo.info</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+		<link rel="Shortcut Icon" href="http://xiaozhuo.info/image/czpub.png" />
+    </head>
+    <body>
+	    <div class="container-fluid">
+		    <div class="well well-lg">
+			    <div class="alert alert-success">
+				    <span class="glyphicon glyphicon-pushpin"></span> 记录一些琐碎的想法
+				</div>
+				<div class="alert alert-success">
+					<form class="form-horizontal">
+					  <div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">Time</label>
+						<div class="col-sm-10">
+						  <input type="date" class="form-control" id="time" >
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label for="inputPassword3" class="col-sm-2 control-label">Content</label>
+						<div class="col-sm-10">
+						  <textarea class="form-control" rows="5" id="content"></textarea>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+						  <button type="submit" class="btn btn-success" onClick="saveIdea()">Submit</button>
+						</div>
+					  </div>
+					</form>
+				</div>
+				<div class="alert alert-success" >
+				    <div class="ideas">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">time</h3>
+							</div>
+							<div class="panel-body">
+								content
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div>
+            <p align="center">2021@xiaozhuo.info All Rights Reserved <a href="http://www.beian.miit.gov.cn/" target="_blank">蜀ICP备17024254号</a></p>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/layer/layer.js"></script>
+		<script type="text/javascript">
+			$(function(){
+			  getAllInfor({});
+			})
+			
+			function getAllInfor(reqData){
+			    $.ajax({
+				  type: 'get',
+				  dataType: 'json',
+				  url: 'http://localhost:8080/api/idea/list?time=',
+				  data: reqData,
+				  success: function(data) {
+					if (data.data) {
+					  console.log("list result========", data.data);
+					  var inforData = data.data
+					  $(".ideas").html("");//清空
+					  var html = '';
+					  for (var i = 0; i < inforData.length; i++) {       
+						var contentHtml = '';
+						var contentList = [];
+						if (inforData[i].ideaList) {
+						  contentList = inforData[i].ideaList;
+						}
+						for (var j = 0; j < contentList.length; j++) {
+						  contentHtml += '<div class="panel-body">' + contentList[j].content + '</div>'       
+						};
+						html += '<div class="panel panel-default">' + '<div class="panel-heading">'+
+							'<h3 class="panel-title">' + inforData[i].time + '</h3></div>' + contentHtml + '</div>';
+					  };
+					  console.log(html);
+					  $(".ideas").append(html)
+					};                              
+				  },
+				  error: function() {
+				  }
+			  });   
+			}
+			
+		    function saveIdea() {
+			    var time = $("#time").val();
+				var content = $("#content").val();
+				if (time.length == 0) {
+				    confirm("Time is not empty");
+					return false;
+				} else if (content.length == 0) {
+				    confirm("content is not empty");
+					return false;
+				}
+				var data = {
+				    time: time,
+					content: content
+				}
+				$.ajax({
+					url: 'http://localhost:8080/api/idea/create',
+					type: 'post',
+					async:false,
+					contentType: "application/json",
+					data: JSON.stringify(data),
+					dataType: 'json',
+					success: function (data) {
+						if (data.status.code == 2000) {    
+							alert("保存成功");
+							location.reload(true);
+						} else {
+							alert(data.status.message);
+						}
+					},
+					error: function(data) {
+					    alert("系统异常");
+					}
+				});
+			}
+		</script>
+    </body>
+</html>
