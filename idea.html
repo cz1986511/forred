@@ -66,11 +66,10 @@
 			    $.ajax({
 				  type: 'get',
 				  dataType: 'json',
-				  url: 'http://localhost:8080/api/idea/list?time=',
+				  url: 'http://xiaozhuo.info/api/idea/list?time=',
 				  data: reqData,
 				  success: function(data) {
 					if (data.data) {
-					  console.log("list result========", data.data);
 					  var inforData = data.data
 					  $(".ideas").html("");//清空
 					  var html = '';
@@ -86,7 +85,6 @@
 						html += '<div class="panel panel-default">' + '<div class="panel-heading">'+
 							'<h3 class="panel-title">' + inforData[i].time + '</h3></div>' + contentHtml + '</div>';
 					  };
-					  console.log(html);
 					  $(".ideas").append(html)
 					};                              
 				  },
@@ -110,7 +108,7 @@
 					content: content
 				}
 				$.ajax({
-					url: 'http://localhost:8080/api/idea/create',
+					url: 'http://xiaozhuo.info/api/idea/create',
 					type: 'post',
 					async:false,
 					contentType: "application/json",
