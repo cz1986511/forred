@@ -10,43 +10,82 @@
 		<link rel="Shortcut Icon" href="http://xiaozhuo.info/image/czpub.png" />
     </head>
     <body>
-	    <div class="container">
-			<!-- 导航 -->
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="navbar-header">
-					    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						    <span class="glyphicon glyphicon-arrow-down"></span>
-					    </button>
-					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<div class="weather" id="weather">天气</div>
-						<div class="oilInfo" id="oilInfo">油价</div>
-					</div>
-				</div>
-			</nav>
-			<!-- 内容 -->
-		    <div class="well well-lg">
-				<div class="content row">
-                    <div class="content-infors ">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dataInfor " id="dataInfor">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="top ">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-3 col-lg-3 col-lg-offset-0 text-left">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-3 col-lg-3 col-lg-offset-0 text-right">
+                                        <div class="input-group input-group-sm">
+                                            <input class="form-control" placeholder="" type="text">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button">
+                                                        <span class=" glyphicon glyphicon-search" id="basic-addon2">
+                                                        </span>
+                                                    </button>
+                                                </span>
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-3 col-lg-3 col-lg-offset-0 text-right">
+                                    </div>
+                                </div>
+                                <div class="weather" id="weather">
+                                    天气
+                                </div>
+								<div class="oilInfo" id="oilInfo">
+                                    油价
+                                </div>
+                                <div class="row tabs">
+                                    <ul class="nav nav-pills tabsInfor">
+                                        <li class="active title" role="presentation">
+                                            <a class="getInfor">
+                                                最新
+                                            </a>
+                                        </li>
+										<li class="title" role="presentation">
+                                            <a href="/idea.html">
+                                                idea
+                                            </a>
+                                        </li>
+                                        <li class="title" role="presentation">
+                                            <a href="/map.html">
+                                                地图
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tabsoperate">
+                                        <span class="glyphicon glyphicon-chevron-up tabsclose tabsoperate-icon">
+                                        </span>
+                                        <span class="glyphicon glyphicon-chevron-down tabsopen tabsoperate-icon">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content row">
+                                <div class="content-infors ">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dataInfor " id="dataInfor">
+                                    </div>
+                                </div>
+                                <div class="content-up">
+                                    <button class="btn btn-default" type="button">
+                                        <span aria-hidden="true" class="glyphicon glyphicon-arrow-up">
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="content-up">
-                        <button class="btn btn-default" type="button">
-                            <span aria-hidden="true" class="glyphicon glyphicon-arrow-up">
-                            </span>
-                        </button>
-                    </div>
                 </div>
-			</div>
-			<div>
-				<p align="center">2021@xiaozhuo.info All Rights Reserved 
-					<a href="http://www.beian.miit.gov.cn/" target="_blank">蜀ICP备17024254号</a>
-					<a href="/idea.html">idea</a>
-				</p>
-			</div>
-		</div>
+            </div>
+        </div>
+        <div>
+            <p align="center">2021@xiaozhuo.info All Rights Reserved <a href="http://www.beian.miit.gov.cn/" target="_blank">蜀ICP备17024254号</a></p>
+        </div>
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/layer/layer.js"></script>
@@ -193,7 +232,7 @@
                     };
                     html += '<div class="row infor" onclick="javascript:window.open(\''+inforData[i].linkUrl+'\')">'+
                       '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+
-                        '<img class="img-thumbnail" src="'+inforData[i].picUrl+'">'+
+                        '<img class="img-rounded" src="'+inforData[i].picUrl+'">'+
                       '</div>'+
                       '<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">'+
                         '<div class="">'+
@@ -208,7 +247,7 @@
                           '<span class="glyphicon glyphicon-home"></span>&nbsp;'+tagesHtml+
                         '</div>'+
                       '</div>'+                  
-                    '</div><hr style="filter: progid:dximagetransform.microsoft.glow(color="#d9534f",strength=10)" width="100%" color="#d9534f" size="5" />'                
+                    '</div>'                
                   };
                   $(".dataInfor").append(html) 
                   $(".content").scrollTop(10) 
